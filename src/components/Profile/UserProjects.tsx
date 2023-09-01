@@ -17,17 +17,17 @@ const UserProjects: React.FC<UserProjectsProps> = ({ data,user }) => {
   
   return (
     <div className='space-y-24 '>
-      {data.map((project:any) => ( project.heroimage !== "" &&
+      {data.map((project:any) => ( 
         <Link key={project.id}
           href={{
-            pathname: `/${user}/${project.id}`
+            pathname: `/projects/${project.name}`
             
           }}
 >  <button
           key={project.id}
-          className= ' w-full transition duration-300 transform hover:scale-90  hover:shadow-md divide-x-8 mb-8'
+          className= ' w-full transition duration-300 transform hover:scale-105  hover:shadow-md divide-x-8 mb-8'
         >
-          <div className=' w-full flex flex-col-reverse sm:flex sm:flex-row sm:justify-around items-center space-y-5 sm:space-y-0 py-5 px-4 sm:px-0'>
+          <div className=' w-full flex flex-col-reverse sm:flex sm:flex-row sm:justify-around items-center space-y-5 sm:space-y-0 py-5  sm:px-0'>
             <div className='space-y-5 w-full md:w-3/6 mt-4'>
               <h2 className='text-5xl font-bold font-open-sans text-start'>{project.name}</h2>
               <p className='leading-7 text-start'>

@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import lio from '../../../../public/lio.png';
 import ImageModal from '../../../components/Constants/ImageModal';
-
+import type { Metadata, ResolvingMetadata } from 'next'
 // Fixed a typo in the function parameters, changed 'project' to 'projectId'
-async function getData(user: string, projectId: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_LIOSERVER}/userproject?user=${user}&projectId=${projectId}`);
+async function getData( nick: string) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_LIOSERVER}/searchproject?search=${nick}`);
   
   if (!res.ok) {
     throw new Error('Failed to fetch data');
@@ -28,11 +28,28 @@ const StatusComponent = ({ result }: any) => {
     <p className={`${textColorClass}`}>{result.status}</p>
   );
 };
+export async function generateMetadata(
+  { params }: { params: {  project: string } }
+): Promise<Metadata> {
+  // read route params
+const {project } = params;
+  const result = await getData(project.toLowerCase());
+  const {projectData} =result 
+  // optionally access and extend (rather than replace) parent metadata
+ 
+  return {
+    title: projectData.displayName,
+    description:projectData.description,
+    openGraph: {
+      images: [projectData.photoURL, ],
+    },
+  }
+}
 
-export default async function Page({ params }: { params: { user: string, project: string } }) {
-  const { user, project } = params;
-  const result = await getData(user, project);
-
+export default async function Page({ params }: { params: {  project: string } }) {
+  const {project } = params;
+  const result = await getData(project.toLowerCase());
+  const {projectData} =result
   if (!result) {
     return <div>Loading...</div>;
   }
@@ -41,7 +58,7 @@ export default async function Page({ params }: { params: { user: string, project
     <div className='space-y-6 p-4'>
       <div className='w-full sm:flex justify-center sm:justify-between md:flex-row-reverse items-center space-y-5 sm:space-y-0'>
         <Image
-          src={result.heroimage}
+          src={projectData.heroimage}
           alt="Picture of the author"
           width={300}
           height={300}
@@ -49,51 +66,55 @@ export default async function Page({ params }: { params: { user: string, project
         />
         <div className='space-y-5 md:w-3/6'>
           <div className='flex w-fit items-end space-x-3'>
-            <h2 className='text-5xl font-bold font-open-sans'>{result.name}</h2>
+            <h2 className='text-5xl font-bold font-open-sans'>{projectData.name}</h2>
             <div>
-              <StatusComponent result={result} />
+              <StatusComponent result={projectData} />
             </div>
           </div>
-          <p className='leading-7'>{result.description}</p>
+          <p className='leading-7'>{projectData.description}</p>
           <div className='space-y-1'>
             <p className='font-light text-gray-400'>Built with:</p>
-            <p className='font-light'>{result.technologyStack}</p>
+            <p className='font-light'>{projectData.technologyStack}</p>
           </div>
           <div className='space-y-1'>
             <p className='font-light text-gray-400'>For:</p>
             <div className='space-x-5 flex'>
-              {result.category.split(',').map((cat: any) => (
-                <div className='w-fit p-2 rounded-full border-2' key={cat}>
-                  <p className='font-light'>{cat}</p>
-                </div>
-              ))}
-            </div>
+  {projectData.category
+    ?.split(',')
+    .map((cat: string, index: number) => (
+      // Check if the value is empty and replace it with a space
+      <div className='w-fit p-2 rounded-full border-2' key={index}>
+        <p className='font-light'>{cat.trim() || ' '}</p>
+      </div>
+    ))}
+</div>
+
           </div>
         </div>
       </div>
 
       <div>
-        {result.collectionOfImages && (
+        {projectData.collectionOfImages && (
           <>
             <p>
-              <span className='text-gray-400'>Project Images:</span> {result.albumName}
+              <span className='text-gray-400'>Project Images:</span> {projectData.albumName}
             </p>
-            <ImageModal name={result.name} images={result.collectionOfImages} />
+            <ImageModal name={projectData.name} images={projectData.collectionOfImages} />
           </>
         )}
       </div>
 
       <div className='space-y-8'>
-        {result.challenges.length > 0 && (
+        {projectData.challenges?.length > 0 && (
           <div className='space-y-1'>
             <p className='font-light text-gray-400'>Challenges:</p>
-            <p className='font-light'>{result.challenges}</p>
+            <p className='font-light'>{projectData.challenges}</p>
           </div>
         )}
-        {result.overcome.length > 0 && (
+        {projectData.overcome?.length > 0 && (
           <div className='space-y-1'>
             <p className='font-light text-gray-400'>How I overcame:</p>
-            <p className='font-light'>{result.overcome}</p>
+            <p className='font-light'>{projectData.overcome}</p>
           </div>
         )}
       </div>
