@@ -5,8 +5,9 @@ export default function Page() {
   return (
     <main className=" h-full">
 
-    <div class="min-h-screen p-6 md:px-12 bg-gradient-to-r from-light-alterna to-light-accent">
-  <div class="p-8 ">
+    <div className="h-full ">
+  <div className=" h-full">
+ 
     <HeroBody/>
   </div>
 </div>
