@@ -8,7 +8,7 @@ export default function HeroBody() {
   const [openModal, setOpenModal] = useState<any>();
 
   return (
-    <div className="h-full ">
+    <div className="h-screen ">
       <div className="flex flex-col items-center justify-center h-full ">
         {/* Hero Text */}
         <div className="mb-10 space-y-6 flex flex-col items-start justify-center h-full ">
