@@ -51,15 +51,15 @@ export default async function Page({ params }: { params: {  project: string } })
   const result = await getData(project.toLowerCase());
   const {projectData} =result
   if (!result) {
-    return <div>Loading...</div>;
+    return <p className='font-semibold text-gray-500'>Fetching project</p>;
   }
 
   return (
-    <div className='space-y-6 p-4'>
+    <div className='space-y-6 py-4'>
       <div className='w-full sm:flex justify-center sm:justify-between md:flex-row-reverse items-center space-y-5 sm:space-y-0'>
         <Image
           src={projectData.heroimage}
-          alt="Picture of the author"
+          alt={`  ${projectData.name}-image`}
           width={300}
           height={300}
           className='w-full sm:w-fit'
@@ -71,6 +71,14 @@ export default async function Page({ params }: { params: {  project: string } })
               <StatusComponent result={projectData} />
             </div>
           </div>
+          <button className='border flex w-fit space-x-5 p-2 items-center rounded-full'>
+
+            <Image src={projectData.heroimage}
+          alt={`  ${projectData.name}-image`}
+          width={20}
+          height={20} className='rounded-full' /> <h1>user</h1>
+          </button>
+
           <p className='leading-7'>{projectData.description}</p>
           <div className='space-y-1'>
             <p className='font-light text-gray-400'>Built with:</p>

@@ -3,7 +3,7 @@ import   HeroBody  from '@/components/Landing/HeroBody'
 
 export default function Page() {
   return (
-    <main className=" h-full">
+    <main className=" h-screen">
 
     <div className="h-full ">
   <div className=" h-full">
