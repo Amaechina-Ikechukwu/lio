@@ -25,9 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-           <body className={` bg-gradient-to-t from-gray-100 to-white h-screen  flex flex-col h-full  ${inter.className}`}>
+           <body className={` bg-gradient-to-t from-gray-100 to-white h-full  flex flex-col h-full  ${inter.className}`}>
            <div className='bg-gradient-to-b from-gray-100 to-white w-full '><Header/></div>
-           <div className='container mx-auto p-4 px-10 sm:px-16 '>{children}</div>
+           <div className='container mx-auto p-4 px-10 sm:px-20 '>{children}</div>
            
            </body>
     </html>
