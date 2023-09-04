@@ -20,16 +20,16 @@ const UserProjects: React.FC<UserProjectsProps> = ({ data,user }) => {
       {data.map((project:any) => ( 
         <Link key={project.id}
           href={{
-            pathname: `/project/${project.name}`
+            pathname: `/${user}/${project.id}`
             
           }}
 >  <button
           key={project.id}
-          className= ' w-full transition duration-300 transform hover:scale-105  hover:shadow-md divide-x-8 mb-8 hover:bg-white hover:px-4 rounded-md'
+          className= ' w-full transition duration-300 transform hover:scale-105  divide-x-8 mb-8 hover:bg-gray-200 hover:px-4 hover:mt-4 rounded-md'
         >
           <div className=' w-full flex flex-col-reverse sm:flex sm:flex-row sm:justify-between items-center space-y-5 sm:space-y-0 py-5  sm:px-2'>
             <div className='space-y-5 w-full md:w-3/6 mt-4'>
-              <h2 className='text-5xl font-bold font-open-sans text-start'>{project.name}</h2>
+              <h2 className='text-3xl font-bold font-open-sans text-start'>{project.name}</h2>
               <p className='leading-7 text-start'>
                 {project.description}
               </p>
