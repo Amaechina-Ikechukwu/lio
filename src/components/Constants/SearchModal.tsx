@@ -92,7 +92,7 @@ const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => 
           <div className="w-full space-y-5">
           {loadingSpinner && <Spinner color='success'  aria-label="Default status example" />}
           <div className='space-y-2 w-full' >{searchTerm.length !== 0 && users.map((user, index) => (
-<Link href={`/${user.uid}`} key={index} className='w-full' >
+<Link href={`/${user.username}`} key={index} className='w-full' >
               <button key={index} className='p-4 w-full text-left bg-gray-200 rounded-md'>
                 <p className="text-x font-medium text-gray-900 dark:text-white">{user.displayName}</p>
               </button></Link>

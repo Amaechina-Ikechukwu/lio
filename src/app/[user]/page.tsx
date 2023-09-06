@@ -51,7 +51,7 @@ export default async function Page({ params }: { params: { user: string } }){
 	const result = await getData(params.user)
 	const projects = await getProjects(result.userData.username)
 	const {userData} =result
-	console.log(projects)
+
 	return(
 		<div className=' space-y-28  '>
 		<div className=' w-full sm:flex justify-center sm:justify-between items-center space-y-5 sm:space-y-0'>
