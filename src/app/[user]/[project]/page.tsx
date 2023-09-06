@@ -44,6 +44,8 @@ const {user,project } = params;
       icon:projectData.heroimage
     },
     openGraph: {
+      title: projectData.name,
+    description:projectData.description,
       images: [projectData.heroimage, ],
     },
   }
