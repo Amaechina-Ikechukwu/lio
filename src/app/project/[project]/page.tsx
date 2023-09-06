@@ -40,6 +40,9 @@ const {project } = params;
   return {
     title: projectData.displayName,
     description:projectData.description,
+     icons:{
+      icon:projectData.heroimage
+    },
     openGraph: {
       images: [projectData.photoURL, ],
     },

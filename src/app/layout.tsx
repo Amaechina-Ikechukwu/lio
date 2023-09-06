@@ -1,11 +1,11 @@
 import './globals.css'
-
+import lio from './lio.png'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header/Header'
 const inter = Inter({ subsets: ['latin'] })
 
 import type { Metadata } from 'next'
- import lio from './lio.png'
+
 export const metadata: Metadata = {
   title: 'lio',
   description: 'Easy platform of compile your portfolio',
@@ -14,8 +14,11 @@ export const metadata: Metadata = {
   description: 'Easy platform of compile your portfolio',
     },
     icons:{
-      icon:'./lio.png'
-    }
+      icon:lio
+    },
+     openGraph: {
+      images: [lio ],
+    },
 }
 
 export default function RootLayout({
