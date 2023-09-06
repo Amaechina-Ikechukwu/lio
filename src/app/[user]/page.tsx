@@ -51,7 +51,7 @@ const result = await getData(params.user)
 }
 export default async function Page({ params }: { params: { user: string } }){
 	const result = await getData(params.user)
-	const projects = await getProjects(result.userData.username)
+	const projects = await getProjects(params.user)
 	const {userData} =result
 
 	return(
