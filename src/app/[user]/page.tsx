@@ -43,6 +43,8 @@ const result = await getData(params.user)
     	icon:userData.photoURL
     },
     openGraph: {
+      title: userData.displayName,
+    description:userData.bio,
       images: [userData.photoURL],
     },
   }
