@@ -8,7 +8,7 @@ import { Spinner } from 'flowbite-react';
 
 interface User {
   displayName: string;
-  uid:string
+  uid:string;username:string
   // Add other user properties here
 }
 
