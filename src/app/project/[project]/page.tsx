@@ -46,7 +46,7 @@ const {project } = params;
     openGraph: {
       title: projectData.displayName,
     description:projectData.description,
-      images: [projectData.photoURL, ],
+      images: [projectData.heroimage, ],
     },
   }
 }
