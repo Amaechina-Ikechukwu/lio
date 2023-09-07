@@ -16,7 +16,7 @@ async function getData(user:string) {
 
   return res.json()
 }
-async function AddClicks(user) {
+async function AddClicks(user:string) {
   try {
     const username = user.toLowerCase();
     const url = `${process.env.NEXT_PUBLIC_LIOSERVER}/addtoclicks`;
