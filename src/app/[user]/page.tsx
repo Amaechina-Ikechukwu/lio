@@ -35,7 +35,7 @@ async function AddClicks(user:string) {
 
     
     return response.json;
-  } catch (error) {
+  } catch (error:any) {
     throw new Error(`Error adding clicks: ${error.message}`);
   }
 }
