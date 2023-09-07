@@ -18,8 +18,8 @@ const StatusComponent = ({ result }: any) => {
 
   if (result.status === 'in progress') {
     textColorClass = 'text-green-500';
-  } else if (result.status === 'completed') {
-    textColorClass = 'text-neutral-500';
+  } else if (result.status === 'done') {
+    textColorClass = 'text-blue-500';
   } else if (result.status === 'todo') {
     textColorClass = 'text-yellow-500';
   }
