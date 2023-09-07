@@ -16,6 +16,30 @@ async function getData(user:string) {
 
   return res.json()
 }
+async function AddClicks(user) {
+  try {
+    const username = user.toLowerCase();
+    const url = `${process.env.NEXT_PUBLIC_LIOSERVER}/addtoclicks`;
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ uid: username }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    
+    return response.json;
+  } catch (error) {
+    throw new Error(`Error adding clicks: ${error.message}`);
+  }
+}
+
 async function getProjects(user:string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_LIOSERVER}/userprojectsbyusername?username=${user}`)
   // The return value is *not* serialized
@@ -32,8 +56,10 @@ export async function generateMetadata(
   { params }: { params: { user: string } }
 ): Promise<Metadata> {
   // read route params
+ 
 const result = await getData(params.user)
 	const {userData} =result 
+   await AddClicks(userData.uid)
   // optionally access and extend (rather than replace) parent metadata
  
   return {
