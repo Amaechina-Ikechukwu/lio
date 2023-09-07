@@ -26,7 +26,7 @@ async function AddClicks(user:string) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ uid: username }),
+      body: JSON.stringify({ uid: user }),
     });
 
     if (!response.ok) {
