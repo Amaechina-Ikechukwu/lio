@@ -95,8 +95,7 @@ export default async function Page({ params }: { params: { user: string } }){
 	</div>
 		<Image  src={userData.photoURL}
           alt={userData.displayName}
-          width={300} 
-          height={200} className='w-full h-auto sm:w-auto' />
+          width={300} height={200} />
 </div>
 
 <div className='space-y-2'>{
