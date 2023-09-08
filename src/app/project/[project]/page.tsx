@@ -27,7 +27,29 @@ async function getData( nick: string) {
   return res.json();
 }
 
+async function AddClicks(user:string,projectId:string) {
+  try {
+    const username = user.toLowerCase();
+    const url = `${process.env.NEXT_PUBLIC_LIOSERVER}/projectclicks`;
 
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ uid: user,projectId:projectId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    
+    return response.json;
+  } catch (error:any) {
+    throw new Error(`Error adding clicks: ${error.message}`);
+  }
+}
 export async function generateMetadata(
   { params }: { params: { user:string, project: string } }
 ): Promise<Metadata> {
@@ -71,6 +93,7 @@ export default async function Page({ params }: { params: {user:string,  project:
   const result = await getData(project.toLowerCase());
   const {projectData} =result
     const {userData}= await getUser(user)
+    await AddClicks(userData.uid,projectData.id)
   if (!result) {
     return <p className='font-semibold text-gray-500'>Fetching project</p>;
   }
@@ -92,7 +115,7 @@ export default async function Page({ params }: { params: {user:string,  project:
               <StatusComponent result={projectData} />
             </div>
           </div>
-          <Link className='mt-4' href={`/${userData.username}`}><button className='border flex w-fit space-x-2 p-2 items-center rounded-full mt-4'>
+          <Link  className='mt-14' href={`/${userData.username}`}><button className='border flex w-fit space-x-2 p-2 items-center rounded-full mt-4'>
 
             <Image src={userData.photoURL}
           alt={`  ${userData.displayName}-image`}
