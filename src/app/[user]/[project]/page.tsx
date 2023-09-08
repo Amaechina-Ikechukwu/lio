@@ -93,7 +93,7 @@ export default async function Page({ params }: { params: {user:string,  project:
   const result = await getData(project.toLowerCase());
   const {projectData} =result
     const {userData}= await getUser(user)
-    await AddClicks(userData.uid,project)
+    await AddClicks(userData.uid,projectData.id)
   if (!result) {
     return <p className='font-semibold text-gray-500'>Fetching project</p>;
   }
