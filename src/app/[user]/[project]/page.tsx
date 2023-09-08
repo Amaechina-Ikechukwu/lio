@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import lio from '../../../../public/lio.png';
+import Link from 'next/link'
 import ImageModal from '../../../components/Constants/ImageModal';
 import type { Metadata, ResolvingMetadata } from 'next'
 // Fixed a typo in the function parameters, changed 'project' to 'projectId'
@@ -54,11 +55,11 @@ const StatusComponent = ({ result }: any) => {
   let textColorClass = '';
 
   if (result.status === 'in progress') {
-    textColorClass = 'text-green-500';
+    textColorClass = 'text-emerald-300 text-sm bg-teal-200 p-2 rounded-full';
   } else if (result.status === 'done') {
-    textColorClass = 'text-blue-500';
-  } else if (result.status === 'todo') {
-    textColorClass = 'text-yellow-500';
+    textColorClass = 'text-blue-900 text-sm bg-blue-200 p-2 rounded-full';
+  } else if (result.status === 'to do') {
+    textColorClass = 'text-yellow-500 text-sm bg-yellow-100 p-2 rounded-full';
   }
 
   return (
@@ -86,18 +87,19 @@ export default async function Page({ params }: { params: {user:string,  project:
         />
         <div className='space-y-5 md:w-3/6'>
           <div className='flex w-fit items-end space-x-3'>
-            <h2 className='text-5xl font-bold font-open-sans'>{projectData.name}</h2>
+            <h2 className='text-3xl sm:text-5xl font-bold font-open-sans'>{projectData.name}</h2>
             <div>
               <StatusComponent result={projectData} />
             </div>
           </div>
-          <button className='border flex w-fit space-x-2 p-2 items-center rounded-full'>
+          <Link  className='mt-14' href={`/${userData.username}`}><button className='border flex w-fit space-x-2 p-2 items-center rounded-full mt-4'>
 
             <Image src={userData.photoURL}
           alt={`  ${userData.displayName}-image`}
           width={30}
           height={30} className='rounded-full aspect-square object-cover' /> <h1>{userData.displayName}</h1>
-          </button>
+          </button></Link>
+          
 
           <p className='leading-7'>{projectData.description}</p>
           <div className='space-y-1'>
