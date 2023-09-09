@@ -27,6 +27,27 @@ async function getData( nick: string) {
   return res.json();
 }
 
+async function AddClicks(user:string, projectId:string) {
+  try {
+    const url = `${process.env.NEXT_PUBLIC_LIOSERVER}/projectclicks`;
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ uid: user, projectId: projectId }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    return response.json(); // Added parentheses ()
+  } catch (error) {
+    throw new Error(`Error adding clicks: ${error.message}`);
+  }
+}
 
 export async function generateMetadata(
   { params }: { params: { user:string, project: string } }
@@ -36,28 +57,6 @@ const {user,project } = params;
   const result = await getData(project.toLowerCase());
   const {projectData} =result 
     const {userData}= await getUser(user)
-    async function AddClicks(user:string,projectId:string) {
-  try {
-    const url = `${process.env.NEXT_PUBLIC_LIOSERVER}/projectclicks`;
-
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ uid: user,projectId:projectId }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch data');
-    }
-
-    
-    return response.json;
-  } catch (error:any) {
-    throw new Error(`Error adding clicks: ${error.message}`);
-  }
-}
     await AddClicks(userData.uid,projectData.id)
   // optionally access and extend (rather than replace) parent metadata
  
