@@ -131,7 +131,7 @@ export default async function Page({
           alt={`  ${projectData.name}-image`}
           width={300}
           height={200}
-          className="w-full sm:w-auto aspect-square object-contain border border-gray-300"
+          className="w-full sm:w-auto aspect-square object-contain border border-gray-300 rounded-md p-5"
         />
         <div className="space-y-5 md:w-3/6">
           <div className="flex w-fit items-end space-x-3">
