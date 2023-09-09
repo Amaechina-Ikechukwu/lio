@@ -43,12 +43,11 @@ async function AddClicks(user:string, projectId:string) {
       throw new Error('Failed to fetch data');
     }
 
-    return response.json(); // Added parentheses ()
+    return response.json();
   } catch (error:any) {
     throw new Error(`Error adding clicks: ${error.message}`);
   }
 }
-
 export async function generateMetadata(
   { params }: { params: { user:string, project: string } }
 ): Promise<Metadata> {
@@ -57,9 +56,8 @@ const {user,project } = params;
   const result = await getData(project.toLowerCase());
   const {projectData} =result 
     const {userData}= await getUser(user)
-   const resultclicks = await AddClicks(userData.uid,projectData.nickname)
-  // optionally access and extend (rather than replace) parent metadata
- 
+
+   
   return {
     title: projectData.name,
     description:projectData.description,
@@ -93,6 +91,9 @@ export default async function Page({ params }: { params: {user:string,  project:
   const result = await getData(project.toLowerCase());
   const {projectData} =result
     const {userData}= await getUser(user)
+    const resultclicks = await AddClicks(userData.uid,projectData.nickname)
+  // optionally access and extend (rather than replace) parent metadata
+ 
   if (!result) {
     return <p className='font-semibold text-gray-500'>Fetching project</p>;
   }
