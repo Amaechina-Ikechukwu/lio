@@ -82,8 +82,8 @@ export default async function Page({ params }: { params: { user: string } }){
 
 	return(
 		<div className=' space-y-28  '>
-		<div className=' w-full sm:flex justify-center sm:justify-between items-center space-y-5 sm:space-y-0'>
-	<div className='space-y-5 md:w-3/6 '>
+		<div className=' w-full md:flex justify-center md:justify-between items-center space-y-5 md:space-y-0'>
+	<div className='space-y-5 md:w-3/6 items-center'>
 	<h2 className='text-5xl font-bold font-open-sans'>{userData.displayName}</h2>
 		<p className='leading-7'>
 			{userData.bio}
@@ -95,7 +95,7 @@ export default async function Page({ params }: { params: { user: string } }){
 	</div>
 		<Image  src={userData.photoURL}
           alt={userData.displayName}
-          width={300} height={200} />
+          width={300} height={200}  />
 </div>
 
 <div className='space-y-2'>{
