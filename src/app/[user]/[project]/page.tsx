@@ -149,7 +149,7 @@ export default async function Page({
                 alt={`  ${userData.displayName}-image`}
                 width={30}
                 height={30}
-                className="rounded-full aspect-square object-cover"
+                className="rounded-full aspect-square object-cover border border-gray-200"
               />{" "}
               <h1>{userData.displayName}</h1>
             </button>
