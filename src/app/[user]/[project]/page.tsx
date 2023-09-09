@@ -44,7 +44,7 @@ async function AddClicks(user:string, projectId:string) {
     }
 
     return response.json(); // Added parentheses ()
-  } catch (error) {
+  } catch (error:any) {
     throw new Error(`Error adding clicks: ${error.message}`);
   }
 }
