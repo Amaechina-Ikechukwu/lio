@@ -27,7 +27,16 @@ async function getData( nick: string) {
   return res.json();
 }
 
-async function AddClicks(user:string,projectId:string) {
+
+export async function generateMetadata(
+  { params }: { params: { user:string, project: string } }
+): Promise<Metadata> {
+  // read route params
+const {user,project } = params;
+  const result = await getData(project.toLowerCase());
+  const {projectData} =result 
+    const {userData}= await getUser(user)
+    async function AddClicks(user:string,projectId:string) {
   try {
     const url = `${process.env.NEXT_PUBLIC_LIOSERVER}/projectclicks`;
 
@@ -49,14 +58,6 @@ async function AddClicks(user:string,projectId:string) {
     throw new Error(`Error adding clicks: ${error.message}`);
   }
 }
-export async function generateMetadata(
-  { params }: { params: { user:string, project: string } }
-): Promise<Metadata> {
-  // read route params
-const {user,project } = params;
-  const result = await getData(project.toLowerCase());
-  const {projectData} =result 
-    const {userData}= await getUser(user)
     await AddClicks(userData.uid,projectData.id)
   // optionally access and extend (rather than replace) parent metadata
  
