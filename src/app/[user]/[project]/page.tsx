@@ -57,7 +57,8 @@ export async function generateMetadata(
 const {user,project } = params;
   const result = await getData(project.toLowerCase());
   const {projectData} =result 
-
+    const {userData}= await getUser(user)
+    await AddClicks(userData.uid,projectData.id)
   // optionally access and extend (rather than replace) parent metadata
  
   return {
@@ -93,7 +94,6 @@ export default async function Page({ params }: { params: {user:string,  project:
   const result = await getData(project.toLowerCase());
   const {projectData} =result
     const {userData}= await getUser(user)
-    await AddClicks(userData.uid,projectData.id)
   if (!result) {
     return <p className='font-semibold text-gray-500'>Fetching project</p>;
   }
@@ -147,7 +147,7 @@ export default async function Page({ params }: { params: {user:string,  project:
       </div>
 
       <div>
-        {projectData.collectionOfImages && (
+        {projectData.collectionOfImages.length>0 && (
           <>
             <p>
               <span className='text-gray-400'>Project Images:</span> {projectData.albumName}
