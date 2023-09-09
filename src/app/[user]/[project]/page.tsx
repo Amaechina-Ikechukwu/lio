@@ -114,9 +114,9 @@ export default async function Page({
       throw new Error("Failed to fetch data");
     }
 
-    return response.json();
+    return null;
   }
-  // const resultclicks = await AddClicks(userData.uid,projectData.nickname)
+  await AddClicks(userData.uid, projectData.nickname);
   // optionally access and extend (rather than replace) parent metadata
 
   if (!result) {
