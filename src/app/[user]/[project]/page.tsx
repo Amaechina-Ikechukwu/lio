@@ -29,7 +29,6 @@ async function getData( nick: string) {
 
 async function AddClicks(user:string,projectId:string) {
   try {
-    const username = user.toLowerCase();
     const url = `${process.env.NEXT_PUBLIC_LIOSERVER}/projectclicks`;
 
     const response = await fetch(url, {
