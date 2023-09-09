@@ -57,7 +57,7 @@ const {user,project } = params;
   const result = await getData(project.toLowerCase());
   const {projectData} =result 
     const {userData}= await getUser(user)
-   const result = await AddClicks(userData.uid,projectData.nickname)
+   const resultclicks = await AddClicks(userData.uid,projectData.nickname)
   // optionally access and extend (rather than replace) parent metadata
  
   return {
