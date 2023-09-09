@@ -131,7 +131,7 @@ export default async function Page({
           alt={`  ${projectData.name}-image`}
           width={300}
           height={200}
-          className="w-full sm:w-auto aspect-square object-contain"
+          className="w-full sm:w-auto aspect-square object-contain border border-gray-300"
         />
         <div className="space-y-5 md:w-3/6">
           <div className="flex w-fit items-end space-x-3">
@@ -149,7 +149,7 @@ export default async function Page({
                 alt={`  ${userData.displayName}-image`}
                 width={30}
                 height={30}
-                className="rounded-full aspect-square object-cover border border-gray-200"
+                className="rounded-full aspect-square object-cover "
               />{" "}
               <h1>{userData.displayName}</h1>
             </button>
