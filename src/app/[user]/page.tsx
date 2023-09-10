@@ -25,6 +25,7 @@ async function AddClicks(user: string) {
     const url = `${process.env.NEXT_PUBLIC_LIOSERVER}/addtoclicks`;
 
     const response = await fetch(url, {
+      next: { revalidate: 3000 },
       method: "POST",
       headers: {
         "Content-Type": "application/json",
