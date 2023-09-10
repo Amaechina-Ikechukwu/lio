@@ -103,6 +103,7 @@ export default async function Page({
     const url = `${process.env.NEXT_PUBLIC_LIOSERVER}/projectclicks`;
 
     const response = await fetch(url, {
+      next: { revalidate: 3000 },
       method: "POST",
       headers: {
         "Content-Type": "application/json",
