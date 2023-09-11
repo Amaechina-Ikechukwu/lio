@@ -3,8 +3,7 @@ import Image from "next/image";
 import lio from "../../../../public/lio.png";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import UserProjects from "../../components/Profile/UserProjects";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram } from '@fortawesome/free-solid-svg-icons'
+
 import Link from 'next/link';
 async function getData(user: string) {
   const username = user.toLowerCase();
