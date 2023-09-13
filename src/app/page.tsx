@@ -1,5 +1,6 @@
 import Image from "next/image";
 import HeroBody from "@/components/Landing/HeroBody";
+import Experience from "@/components/Landing/Experience";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,10 +19,11 @@ export const metadata: Metadata = {
 };
 export default function Page() {
   return (
-    <main className=" h-screen">
-      <div className="h-full ">
-        <div className=" h-full">
+    <main >
+      <div>
+        <div>
           <HeroBody />
+           <Experience />
         </div>
       </div>
     </main>
