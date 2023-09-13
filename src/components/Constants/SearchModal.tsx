@@ -1,3 +1,4 @@
+'use client'
 import React, { useRef, useState } from 'react';
 import { Button, Label, Modal, TextInput } from 'flowbite-react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
@@ -70,11 +71,11 @@ const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => 
       size="md"
       popup
       onClose={() => props.setOpenModal()}
-      initialFocus={emailInputRef}
+      initialFocus={emailInputRef} className=' items-center justify-center'
     >
       <Modal.Header />
       <Modal.Body>
-        <div className="space-y-6">
+        <div className="space-y-6 ">
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">Enter name of user</h3>
           <div>
             <div className="mb-2 block">

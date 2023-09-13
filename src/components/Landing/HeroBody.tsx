@@ -26,7 +26,7 @@ export default function HeroBody() {
             <span className="text-light-alterna">passion and creativity</span>.
           </p>
 <div className='flex flex-col w-full sm:w-fit items-start sm:flex-row space-y-4 sm:space-y-0 space-x-0 sm:space-x-8'><button className="bg-white w-full sm:w-fit  text-black rounded-xl shadow-xl py-4 px-4 font-regular transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent">
-            Create Your Portfolio Now
+            Download Lio App
           </button>
           <button onClick={() => setOpenModal('initial-focus')} className="bg-gray-900 w-full sm:w-fit text-gray-200 rounded-xl shadow-xl py-4 px-4 font-bold transition duration-300 transform hover:scale-105  hover:ring-gray-200 focus:outline-none ring ring-light-accent">
           
