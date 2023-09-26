@@ -28,6 +28,7 @@ async function getData(nick: string) {
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
+  
 
   return res.json();
 }
