@@ -20,7 +20,7 @@ const UserProjects: React.FC<UserProjectsProps> = ({ data,user }) => {
       {data.map((project:any) => ( 
         <Link key={project.id}
           href={{
-            pathname: `/${user}/${project.id}`
+            pathname: `/${user}/${project.nickname}`
             
           }}
 >  <button
