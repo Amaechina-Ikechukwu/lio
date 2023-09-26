@@ -5,7 +5,7 @@ interface Project {
   id: number;
   name: string;
   description: string;
-  heroimage: string;
+  heroimage: string;nickname:string
 }
 
 interface UserProjectsProps {
