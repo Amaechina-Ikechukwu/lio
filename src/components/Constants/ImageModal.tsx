@@ -1,17 +1,17 @@
-'use client'
-import React, { useState } from 'react';
-import { Button, Label, Modal, TextInput } from 'flowbite-react';
-import Image from 'next/image';
-import { Spinner } from 'flowbite-react';
+"use client";
+import React, { useState } from "react";
+import { Button, Label, Modal, TextInput } from "flowbite-react";
+import Image from "next/image";
+import { Spinner } from "flowbite-react";
 
 interface User {
   displayName: string;
   // Add other user properties here
 }
 
-export default function ImageModal(props: { images: string[], name: string }) {
+export default function ImageModal(props: { images: string[]; name: string }) {
   const [openModal, setOpenModal] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
+  const [selectedImage, setSelectedImage] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const openImageModal = (image: string, index: number) => {
@@ -40,7 +40,7 @@ export default function ImageModal(props: { images: string[], name: string }) {
 
   return (
     <div>
-      <div className='space-y-4 flex overflow-x-auto'>
+      <div className="space-y-4 flex overflow-x-auto">
         {props.images &&
           props.images.map((image: any, index: number) => (
             <button key={index} onClick={() => openImageModal(image, index)}>
@@ -49,7 +49,6 @@ export default function ImageModal(props: { images: string[], name: string }) {
                 alt={`${props.name}-images`}
                 width={300}
                 height={300}
-                className='w-full sm:w-fit'
               />
             </button>
           ))}
@@ -65,7 +64,7 @@ export default function ImageModal(props: { images: string[], name: string }) {
               height={500}
             />
           </div>
-          <div className='flex justify-around'>
+          <div className="flex justify-around">
             <button onClick={showPreviousImage}>Previous</button>
             <button onClick={showNextImage}>Next</button>
           </div>

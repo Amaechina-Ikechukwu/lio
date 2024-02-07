@@ -28,7 +28,6 @@ async function getData(nick: string) {
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
-  
 
   return res.json();
 }
@@ -145,7 +144,7 @@ export default async function Page({
             </div>
           </div>
           <Link className="mt-14" href={`/${userData.username}`}>
-            <button className="border flex w-fit space-x-2 p-2 items-center rounded-full mt-4">
+            <button className="border flex w-fit  space-x-2 p-2 items-center rounded-full mt-4">
               <Image
                 src={userData.photoURL}
                 alt={`  ${userData.displayName}-image`}
@@ -153,14 +152,14 @@ export default async function Page({
                 height={30}
                 className="rounded-full aspect-square object-cover "
               />{" "}
-              <h1>{userData.displayName}</h1>
+              <h1 className="text-sm">{userData.displayName}</h1>
             </button>
           </Link>
 
-          <p className="leading-7">{projectData.description}</p>
+          <p className="leading-7 text-sm">{projectData.description}</p>
           <div className="space-y-1">
             <p className="font-light text-gray-400">Built with:</p>
-            <p className="font-light">{projectData.technologyStack}</p>
+            <p className="font-light text-sm">{projectData.technologyStack}</p>
           </div>
           <div className="space-y-1">
             <p className="font-light text-gray-400">For:</p>
@@ -170,7 +169,7 @@ export default async function Page({
                 .map((cat: string, index: number) => (
                   // Check if the value is empty and replace it with a space
                   <div className="w-fit p-2 rounded-full border-2" key={index}>
-                    <p className="font-light">{cat.trim() || " "}</p>
+                    <p className="font-light text-sm">{cat.trim() || " "}</p>
                   </div>
                 ))}
             </div>
