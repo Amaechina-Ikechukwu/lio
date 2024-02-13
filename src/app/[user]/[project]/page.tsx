@@ -129,12 +129,12 @@ export default async function Page({
       <div className="w-full sm:flex justify-center sm:justify-between md:flex-row-reverse items-center space-y-5 sm:space-y-0">
         <Image
           src={projectData.heroimage}
-          alt={`  ${projectData.name}-image`}
+          alt={`${projectData.name}-image`}
           width={300}
           height={200}
           className="w-full sm:w-auto aspect-square object-contain border border-gray-300 rounded-md p-5"
         />
-        <div className="space-y-5 md:w-3/6">
+        <div className="space-y-8 md:w-3/6">
           <div className="flex w-fit items-end space-x-3">
             <h2 className="text-3xl sm:text-5xl font-bold font-open-sans">
               {projectData.name}
@@ -144,36 +144,42 @@ export default async function Page({
             </div>
           </div>
           <Link className="mt-14" href={`/${userData.username}`}>
-            <button className="border flex w-fit  space-x-2 p-2 items-center rounded-full mt-4">
+            <button className=" flex w-fit  space-x-2 p-1 items-center rounded-full mt-4">
+              <p className="font-light text-sm text-gray-400">created by:</p>
+              <h1 className="text-sm text-underline">{userData.displayName}</h1>
               <Image
                 src={userData.photoURL}
-                alt={`  ${userData.displayName}-image`}
+                alt={`${userData.displayName}-image`}
                 width={30}
                 height={30}
                 className="rounded-full aspect-square object-cover "
-              />{" "}
-              <h1 className="text-sm">{userData.displayName}</h1>
+              />
             </button>
           </Link>
 
-          <p className="leading-7 text-sm">{projectData.description}</p>
+          <p className="leading-7 text-md">{projectData.description}</p>
           <div className="space-y-1">
             <p className="font-light text-gray-400">Built with:</p>
             <p className="font-light text-sm">{projectData.technologyStack}</p>
           </div>
-          <div className="space-y-1">
-            <p className="font-light text-gray-400">For:</p>
-            <div className="space-x-5 flex">
-              {projectData.category
-                ?.split(",")
-                .map((cat: string, index: number) => (
-                  // Check if the value is empty and replace it with a space
-                  <div className="w-fit p-2 rounded-full border-2" key={index}>
-                    <p className="font-light text-sm">{cat.trim() || " "}</p>
-                  </div>
-                ))}
+          {projectData?.category && (
+            <div className="space-y-1">
+              <p className="font-light text-gray-400">For:</p>
+              <div className="space-x-5 flex">
+                {projectData.category
+                  ?.split(",")
+                  .map((cat: string, index: number) => (
+                    // Check if the value is empty and replace it with a space
+                    <div
+                      className="w-fit p-2 rounded-full border-2"
+                      key={index}
+                    >
+                      <p className="font-light text-sm">{cat.trim() || " "}</p>
+                    </div>
+                  ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 
