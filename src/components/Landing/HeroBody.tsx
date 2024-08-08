@@ -20,16 +20,16 @@ export default function HeroBody() {
           </h1>
           <p className="text-xl font-regular text-start text-gray-700 leading-lg">
             No portfolio site yet?. Lio provides a platform to display your
-            projects. &apos; In addition to displaying your projects, Lio
-            provides tools to track your progress and measure the impact of your
-            work. Analyze performance metrics, see which projects are getting
-            the most attention, and use these insights to refine your portfolio
-            and improve your professional presence. Don't wait any longer to
-            share your talent with the world.
+            projects. In addition to displaying your projects, Lio provides
+            tools to track your progress and measure the impact of your work.
+            Analyze performance metrics, see which projects are getting the most
+            attention, and use these insights to refine your portfolio and
+            improve your professional presence. Don't wait any longer to share
+            your talent with the world.
           </p>
           <div className="flex flex-col w-full sm:w-fit items-start sm:flex-row space-y-4 sm:space-y-0 space-x-0 sm:space-x-8">
             <button className="bg-white w-full sm:w-fit  text-black rounded-xl shadow-xl py-4 px-4 font-regular transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent">
-              <a href="https://expo.dev/artifacts/eas/vHTyT34NvDbrXDjiNcvpTS.apk">
+              <a href="https://firebasestorage.googleapis.com/v0/b/lio-6af30.appspot.com/o/lio.apk?alt=media&token=d215a761-c8bf-4dbc-90ba-f203001ef6c0">
                 Download Lio App
               </a>
             </button>

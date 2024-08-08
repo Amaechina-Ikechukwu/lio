@@ -183,11 +183,11 @@ export default async function Page({
         </div>
       </div>
 
-      <div>
+      <div className="bg-gray-300 p-5 rounded-md">
         {projectData.collectionOfImages.length > 0 && (
           <>
             <p>
-              <span className="text-gray-400">Project Images:</span>{" "}
+              <span className="text-gray-600">Project Images:</span>{" "}
               {projectData.albumName}
             </p>
             <ImageModal
