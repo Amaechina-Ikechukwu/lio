@@ -1,5 +1,5 @@
 import LioHome from "../lio-web.png";
-import LioWebUser from "../lio-web-user.png";
+import UserPage from "../userpage.png";
 import LioWebProject from "../lio-web-project.png";
 import LioH from "../lio-home.jpg";
 import LioInput from "../lio-input.jpg";
@@ -11,7 +11,7 @@ export default function Experience() {
     {
       title: "For Up Coming Developers",
       use: "Lio provides a platform for upcoming developers to share even the most little or basic of projects until they have their portfolio site",
-      image: LioWebUser,
+      image: UserPage,
     },
     {
       title: "Dont Hide That Project",

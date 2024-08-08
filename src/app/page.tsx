@@ -2,6 +2,8 @@ import Image from "next/image";
 import HeroBody from "@/components/Landing/HeroBody";
 import Experience from "@/components/Landing/Experience";
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export const metadata: Metadata = {
   title: "lio",
@@ -19,11 +21,13 @@ export const metadata: Metadata = {
 };
 export default function Page() {
   return (
-    <main >
+    <main>
       <div>
         <div>
-          <HeroBody />
-           <Experience />
+          <Suspense fallback={<Loading />}>
+            <HeroBody />
+            <Experience />
+          </Suspense>
         </div>
       </div>
     </main>
