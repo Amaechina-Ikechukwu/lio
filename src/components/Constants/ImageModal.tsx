@@ -40,7 +40,7 @@ export default function ImageModal(props: { images: string[]; name: string }) {
 
   return (
     <div>
-      <div className="space-x-4 flex overflow-x-auto ">
+      <div className="space-x-4 flex overflow-x-auto items-center justify-center">
         {props.images &&
           props.images.map((image: any, index: number) => (
             <button key={index} onClick={() => openImageModal(image, index)}>

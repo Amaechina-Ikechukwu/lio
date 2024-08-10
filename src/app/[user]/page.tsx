@@ -88,6 +88,7 @@ export default async function Page({ params }: { params: { user: string } }) {
   const result = await getData(params.user);
   const projects = await getProjects(params.user);
   const { userData } = result;
+  console.log(projects);
   const socials = [
     {
       social: "github",
@@ -123,15 +124,16 @@ export default async function Page({ params }: { params: { user: string } }) {
             {userData.displayName}
           </h2>
           <p className="text-sm  leading-7">{userData.bio}</p>
-          <a
-            className="py-2 flex space-x-2 transition duration-300 transform hover:scale-105"
-            href={`mailto:${userData.email}`}
-          >
-            <h3 className="underline-offset-1 font-light text-sm font-open-sans">
-              {userData.email}
-            </h3>
-            <EnvelopeIcon className="h-6 w-6 text-gray-500" />
-          </a>
+          {userData.email && (
+            <a href={`mailto:${userData.email}`}>
+              <button className="p-2 flex space-x-3 transition duration-300 transform hover:scale-105 bg-light-accent w-2/4 rounded-full items-center justify-center mt-4">
+                <h3 className="underline-offset-1 font-bold text-xl font-open-sans">
+                  Contact Me
+                </h3>
+                <EnvelopeIcon className="h-6 w-6 text-gray-500" />
+              </button>
+            </a>
+          )}
           <div className="flex space-x-4 drop-shadow-md">
             {socials.map(
               (soc) =>
