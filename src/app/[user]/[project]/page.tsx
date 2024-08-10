@@ -125,7 +125,7 @@ export default async function Page({
   }
 
   return (
-    <div className="space-y-6 pt-14">
+    <div className="space-y-20 pt-14">
       <div className="w-full sm:flex justify-center sm:justify-between md:flex-row-reverse items-center space-y-5 sm:space-y-0">
         <Image
           src={projectData.heroimage}
@@ -145,7 +145,9 @@ export default async function Page({
           </div>
           <Link className="mt-14" href={`/${userData.username}`}>
             <button className=" flex w-fit  space-x-2 p-1 items-center rounded-full mt-4">
-              <p className="font-light text-sm text-gray-400">created by:</p>
+              <p className=" text-sm text-gray-600 font-semibold">
+                created by:
+              </p>
               <h1 className="text-sm text-underline">{userData.displayName}</h1>
               <Image
                 src={userData.photoURL}
@@ -157,14 +159,18 @@ export default async function Page({
             </button>
           </Link>
 
-          <p className="leading-7 text-md">{projectData.description}</p>
+          <p className="leading-7 font-bold text-md">
+            {projectData.description}
+          </p>
           <div className="space-y-1">
-            <p className="font-light text-gray-400">Built with:</p>
-            <p className="font-light text-sm">{projectData.technologyStack}</p>
+            <p className=" text-gray-600 font-semibold">Built with:</p>
+            <p className="font-semibold text-md">
+              {projectData.technologyStack}
+            </p>
           </div>
           {projectData?.category && (
             <div className="space-y-1">
-              <p className="font-light text-gray-400">For:</p>
+              <p className=" text-gray-600 font-semibold">For:</p>
               <div className="space-x-5 flex">
                 {projectData.category
                   ?.split(",")
@@ -174,20 +180,45 @@ export default async function Page({
                       className="w-fit p-2 rounded-full border-2"
                       key={index}
                     >
-                      <p className="font-light text-sm">{cat.trim() || " "}</p>
+                      <p className="font-semibold text-md">
+                        {cat.trim() || " "}
+                      </p>
                     </div>
                   ))}
               </div>
             </div>
           )}
+          <div>
+            <button
+              type="button"
+              className=" bg-light-accent focus:ring-4 focus:outline-none focus:ring-zinc-300 font-medium rounded-lg text-md px-5 py-2 text-center inline-flex items-center transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent text-gray-600"
+            >
+              View live demo
+              <svg
+                className="rtl:rotate-180 w-3.5 h-3.5 ms-2 text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="bg-gray-300 p-5 rounded-md">
+      <div className="bg-gray-300 p-5 rounded-md space-y-4">
         {projectData.collectionOfImages.length > 0 && (
           <>
             <p>
-              <span className="text-gray-600">Project Images:</span>{" "}
+              <span className="text-gray-900">Project Images:</span>{" "}
               {projectData.albumName}
             </p>
             <ImageModal
@@ -201,14 +232,14 @@ export default async function Page({
       <div className="space-y-8">
         {projectData.challenges?.length > 0 && (
           <div className="space-y-1">
-            <p className="font-light text-gray-400">Challenges:</p>
-            <p className="font-light">{projectData.challenges}</p>
+            <p className=" text-gray-600 font-semibold">Challenges:</p>
+            <p className="">{projectData.challenges}</p>
           </div>
         )}
         {projectData.overcome?.length > 0 && (
           <div className="space-y-1">
-            <p className="font-light text-gray-400">How I overcame:</p>
-            <p className="font-light">{projectData.overcome}</p>
+            <p className=" text-gray-600 font-semibold">How I overcame:</p>
+            <p className="">{projectData.overcome}</p>
           </div>
         )}
       </div>
