@@ -21,13 +21,14 @@ export default function Header() {
         </button>
       </Link>
 
-      {pathName.split("/").length == 2 && (
-        <div>
-          <a href={`${pathName}#work`}>
-            <LioButton text="View my works" style="shadow-lg" />
-          </a>
-        </div>
-      )}
+      {pathName.split("/").length == 2 ||
+        (pathName == "/" && (
+          <div>
+            <a href={`${pathName}#work`}>
+              <LioButton text="View my works" style="shadow-lg" />
+            </a>
+          </div>
+        ))}
     </div>
   );
 }

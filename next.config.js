@@ -1,66 +1,72 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	images: {
-    domains: ['firebasestorage.googleapis.com',"lh3.googleusercontent.com"], // Add more domains if needed
+  images: {
+    domains: ["firebasestorage.googleapis.com", "lh3.googleusercontent.com"], // Add more domains if needed
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'firebasestorage.googleapis.com',
-        port: '',
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+        port: "",
         // pathname: '/account123/**',
       },
-       {
-        protocol: 'https',
+      {
+        protocol: "https",
         hostname: "lh3.googleusercontent.com",
-        port: '',
+        port: "",
         // pathname: '/account123/**',
       },
       {
-        protocol: 'https',
+        protocol: "https",
         hostname: "www.flaticon.com",
-        port: '',
+        port: "",
         // pathname: '/account123/**',
       },
       {
-        protocol: 'https',
+        protocol: "https",
         hostname: "fontawesome.com",
-        port: '',
+        port: "",
         // pathname: '/account123/**',
       },
-        {
-        protocol: 'https',
+      {
+        protocol: "https",
         hostname: "github.githubassets.com",
-        port: '',
+        port: "",
         // pathname: '/account123/**',
       },
-        {
-        protocol: 'https',
+      {
+        protocol: "https",
         hostname: "upload.wikimedia.org",
-        port: '',
+        port: "",
         // pathname: '/account123/**',
       },
-        {
-        protocol: 'https',
+      {
+        protocol: "https",
         hostname: "cdn-icons-png.flaticon.com",
-        port: '',
+        port: "",
         // pathname: '/account123/**',
       },
 
-        {
-        protocol: 'https',
+      {
+        protocol: "https",
         hostname: "img.freepik.com",
-        port: '',
+        port: "",
         // pathname: '/account123/**',
       },
       {
-        protocol: 'https',
+        protocol: "https",
         hostname: "cdn.sanity.io",
-        port: '',
+        port: "",
+        // pathname: '/account123/**',
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+        port: "",
         // pathname: '/account123/**',
       },
     ],
   },
-   async rewrites() {
+  async rewrites() {
     return [
       {
         source: "/public/index.html",
@@ -68,6 +74,6 @@ const nextConfig = {
       },
     ];
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

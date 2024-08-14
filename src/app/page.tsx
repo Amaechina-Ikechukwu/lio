@@ -25,8 +25,10 @@ export default function Page() {
       <div>
         <div>
           <Suspense fallback={<Loading />}>
-            <HeroBody />
-            <Experience />
+            <div className="space-y-60 md:space-y-40">
+              <HeroBody />
+              <Experience />
+            </div>
           </Suspense>
         </div>
       </div>
