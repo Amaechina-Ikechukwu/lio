@@ -1,6 +1,6 @@
 import homesm from "./home-sm.png";
 import homelg from "./home-lg.png";
-import about from "../about.png";
+
 import LioH from "../lio-home.jpg";
 import LioInput from "../lio-input.jpg";
 import LioProfile from "../lio-profile.jpg";
@@ -25,7 +25,23 @@ export default function Experience() {
         "https://images.pexels.com/photos/4050216/pexels-photo-4050216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", // Replace with the correct image variable
     },
   ];
-
+  const HowItWorks = [
+    {
+      title: "Getting started",
+      note: "Our simple onboarding process gets you up and running in no time. See at a glance your projects and visits to your link. Your information out at a glance",
+      image: LioH,
+    },
+    {
+      title: "Add Project",
+      note: "Developers can start adding their projects immediately, while companies can begin integrating existing project information into their site",
+      image: LioInput,
+    },
+    {
+      title: "Share and Connect",
+      note: "Start sharing your unique project links. Companies can connect their site to our platform, ensuring their projects are always up-to-date.",
+      image: LioProfile,
+    },
+  ];
   return (
     <div className="space-y-24 w-full">
       {data.map((data, index) => (
@@ -41,7 +57,7 @@ export default function Experience() {
               {data.use}
             </p>
           </div>
-          <div className="p-5 rounded-xl bg-gray-800 w-3/6 flex item-center">
+          <div className="p-5 rounded-xl bg-gray-800 w-full md:w-3/6 flex item-center">
             <Image
               src={data.image}
               width={300}
@@ -54,31 +70,41 @@ export default function Experience() {
           </div>
         </div>
       ))}
-      <div className="flex flex-col md:flex-col-reverse items-center justify-between gap-10 bg-gradient-to-t from-gray-900 via-gray-900 to-light-accent w-full rounded-lg">
-        <button className="bg-gray-900 w-full  md:w-3/6  text-gray-200 rounded-xl shadow-xl py-3 px-4 font-bold text-md transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent">
-          <a href="https://expo.dev/artifacts/eas/vHTyT34NvDbrXDjiNcvpTS.apk">
-            Get Started With Lio App
-          </a>
-        </button>
-        <div className="flex flex-col md:flex-row space-y-6 md:gap-14 justify-center">
-          <Image
-            src={LioH}
-            width={300}
-            alt={"lio homescreen"}
-            className="w-full sm:w-auto aspect-square object-contain rounded-md w-[500px] md:w-auto self-end"
-          />
-          <Image
-            src={LioProfile}
-            width={300}
-            alt={"Lio Profile"}
-            className="w-full sm:w-auto aspect-square object-contain rounded-md w-[500px] md:w-auto"
-          />
-          <Image
-            src={LioInput}
-            width={300}
-            alt={"lio-input"}
-            className="w-full sm:w-auto aspect-square object-contain rounded-md w-[500px] md:w-auto justify-self-center"
-          />
+      <div>
+        <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-100 dark:text-white">
+          How Lio Works
+        </h2>
+        <div className="flex flex-col-reverse md:flex-col-reverse items-center justify-between gap-10 bg-gradient-to-t from-transparent via-gray-900 to-light-accent w-full rounded-lg ">
+          <button className="bg-gray-900 w-full  md:w-3/6  text-gray-200 rounded-xl shadow-xl py-3 px-4 font-bold text-md transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent">
+            <a href="https://expo.dev/artifacts/eas/vHTyT34NvDbrXDjiNcvpTS.apk">
+              Get Started With Lio App
+            </a>
+          </button>
+          <div className="flex flex-col md:flex-row space-y-6 md:gap-14 md:justify-center md:relative md:w-screen">
+            {HowItWorks.map((work, index) => (
+              <div className=" self-end" key={index}>
+                <div className="max-w-sm  border border-gray-800 rounded-lg shadow bg-gray-800 dark:border-gray-700">
+                  <Image
+                    src={work.image}
+                    width={300}
+                    alt={"lio-input"}
+                    className="w-full sm:w-auto aspect-square object-contain rounded-t-md w-[500px] md:w-auto "
+                  />
+
+                  <div className="p-5">
+                    <a href="#">
+                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-100 dark:text-white">
+                        {work.title}
+                      </h5>
+                    </a>
+                    <p className="mb-3 font-normal text-gray-300 dark:text-gray-700">
+                      {work.note}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
