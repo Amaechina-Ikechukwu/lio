@@ -47,7 +47,7 @@ export default function Experience() {
       {data.map((data, index) => (
         <div
           key={data.title}
-          className="flex flex-col md:flex-row justify-between items-center gap-20 "
+          className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-20 "
         >
           <div className="md:w-3/6 space-y-6">
             <h2 className="text-4xl text-gray-100 sm:leading-loose  text-start font-bold">
