@@ -3,13 +3,15 @@ import React from "react";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import SearchModal from "@/components/Constants/SearchModal";
+import patternlight from "./Pattern-Light.png";
+import Image from "next/image";
 
 export default function HeroBody() {
   const [openModal, setOpenModal] = useState<any>();
 
   return (
-    <div className="h-screen ">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-center h-full gap-20 md:gap-40 ">
+    <div className="space-y-10 ">
+      <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-center h-full gap-20 md:gap-40 ">
         {/* Hero Text */}
         <div className="mb-10 space-y-6 flex flex-col items-start justify-center h-full ">
           <h1 className="text-5xl text-gray-100 sm:leading-loose  text-start font-bold">
@@ -41,9 +43,14 @@ export default function HeroBody() {
         </div>
         <img
           src="https://images.pexels.com/photos/5922323/pexels-photo-5922323.jpeg?auto=compress&cs=tinysrgb&w=600"
-          className="rounded-xl h-3/4 md:w-3/6"
+          className="rounded-xl  md:w-2/5"
         />
       </div>
+      <Image
+        src={patternlight}
+        alt={"lio pattern"}
+        className="rounded-xl w-full h-[300px] object-cover"
+      />
     </div>
   );
 }

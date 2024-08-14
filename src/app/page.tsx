@@ -4,6 +4,8 @@ import Experience from "@/components/Landing/Experience";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Loading from "./loading";
+import Organiztion from "@/components/Landing/Organiztion";
+import FadeInSection from "@/components/Constants/FadeInSection";
 
 export const metadata: Metadata = {
   title: "lio",
@@ -26,8 +28,15 @@ export default function Page() {
         <div>
           <Suspense fallback={<Loading />}>
             <div className="space-y-60 md:space-y-40">
-              <HeroBody />
-              <Experience />
+              <FadeInSection>
+                <HeroBody />
+              </FadeInSection>
+              <FadeInSection>
+                <Experience />
+              </FadeInSection>
+              <FadeInSection>
+                <Organiztion />
+              </FadeInSection>
             </div>
           </Suspense>
         </div>
