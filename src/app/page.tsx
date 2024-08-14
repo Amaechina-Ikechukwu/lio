@@ -27,7 +27,7 @@ export default function Page() {
       <div>
         <div>
           <Suspense fallback={<Loading />}>
-            <div className="space-y-60 md:space-y-40">
+            <div className="space-y-40 md:space-y-40">
               <FadeInSection>
                 <HeroBody />
               </FadeInSection>
