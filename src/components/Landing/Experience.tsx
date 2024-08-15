@@ -71,7 +71,7 @@ export default function Experience() {
         </div>
       ))}
       <div>
-        <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-100 dark:text-white">
+        <h2 className="mb-2 text-[36px] md:text-[48px] font-bold tracking-tight text-gray-100 dark:text-white">
           How Lio Works
         </h2>
         <div className="flex flex-col-reverse md:flex-col-reverse items-center justify-between gap-10 bg-gradient-to-t from-transparent via-gray-900 to-light-accent w-full rounded-lg ">

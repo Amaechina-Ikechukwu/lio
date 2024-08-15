@@ -6,6 +6,8 @@ import { Suspense } from "react";
 import Loading from "./loading";
 import Organiztion from "@/components/Landing/Organiztion";
 import FadeInSection from "@/components/Constants/FadeInSection";
+import Developers from "@/components/Landing/Developers";
+import Testinomials from "@/components/Landing/Testinomials";
 
 export const metadata: Metadata = {
   title: "lio",
@@ -35,7 +37,13 @@ export default function Page() {
                 <Experience />
               </FadeInSection>
               <FadeInSection>
+                <Developers />
+              </FadeInSection>
+              <FadeInSection>
                 <Organiztion />
+              </FadeInSection>
+              <FadeInSection>
+                <Testinomials />
               </FadeInSection>
             </div>
           </Suspense>
