@@ -74,13 +74,13 @@ export default function Experience() {
         <h2 className="mb-2 text-[36px] md:text-[48px] font-bold tracking-tight text-gray-100 dark:text-white">
           How Lio Works
         </h2>
-        <div className="flex flex-col-reverse md:flex-col-reverse items-center justify-between gap-10 bg-gradient-to-t from-transparent via-gray-900 to-light-accent w-full rounded-lg ">
+        <div className="flex flex-col-reverse md:flex-col-reverse items-center justify-between gap-10 bg-gradient-to-t from-transparent via-gray-900 to-light-accent  md:w-full rounded-lg ">
           <button className="bg-gray-900 w-full  md:w-3/6  text-gray-200 rounded-xl shadow-xl py-3 px-4 font-bold text-md transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent">
             <a href="https://expo.dev/artifacts/eas/vHTyT34NvDbrXDjiNcvpTS.apk">
               Get Started With Lio App
             </a>
           </button>
-          <div className="flex flex-col md:flex-row space-y-6 md:gap-14 md:justify-center md:relative md:w-screen">
+          <div className="flex flex-col md:flex-row space-y-6 md:gap-14 md:justify-center items-center self-center px-5 relative w-screen mt-32 md:mt-0">
             {HowItWorks.map((work, index) => (
               <div className=" self-end" key={index}>
                 <div className="max-w-sm  border border-gray-800 rounded-lg shadow bg-gray-800 dark:border-gray-700">

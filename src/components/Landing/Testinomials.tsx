@@ -30,17 +30,6 @@ function Testinomials() {
   ];
   return (
     <div>
-      <div
-        style={{ backgroundImage: `url(${patternlight})` }}
-        className="bg-local bg-center bg-no-repeat bg-cover"
-      >
-        <div className="backdrop-opacity-10 backdrop-invert bg-white/30 p-4 rounded-lg">
-          <h2 className="text-lg font-bold text-center text-gray-900">
-            Try Lio Now
-          </h2>
-        </div>
-      </div>
-
       <div className="bg-dark-accent p-5 rounded-lg gap-30 w-full ">
         <h2 className="text-[36px] md:text-[48px] text-gray-700 font-bold mb-5">
           Testinomials

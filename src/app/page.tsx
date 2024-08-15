@@ -42,6 +42,29 @@ export default function Page() {
               <FadeInSection>
                 <Organiztion />
               </FadeInSection>
+              <div
+                style={{
+                  backgroundImage: `url(https://firebasestorage.googleapis.com/v0/b/lio-6af30.appspot.com/o/Pattern%20Light.png?alt=media&token=0db7bb49-9c78-435b-91d5-d1721e9fdcea)`,
+                }}
+                className=" bg-center bg-no-repeat bg-cover md:h-[200px]  rounded-lg"
+              >
+                <div className="bg-[rgba(0,0,0,0.8)] p-4 w-full h-full flex flex-col md:flex-row items-center justify-between gap-10">
+                  <div className="gap-20 md:w-2/5 ">
+                    <h2 className="text-[32px] font-bold  text-gray-100">
+                      Ready to take your projects or company to the next level?
+                    </h2>
+                    {/* <h2 className="text-[38px] font-bold  text-gray-100">
+                      Try Lio Now
+                    </h2> */}
+                  </div>
+
+                  <button className="bg-light-accent w-full sm:w-3/6  text-gray-900 font-bold rounded-xl shadow-xl h-fit p-4 font-regular transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent">
+                    <a href="https://firebasestorage.googleapis.com/v0/b/lio-6af30.appspot.com/o/lio.apk?alt=media&token=d215a761-c8bf-4dbc-90ba-f203001ef6c0">
+                      Get the app now
+                    </a>
+                  </button>
+                </div>
+              </div>
               <FadeInSection>
                 <Testinomials />
               </FadeInSection>
