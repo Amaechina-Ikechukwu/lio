@@ -31,7 +31,7 @@ function Testinomials() {
   return (
     <div>
       <div
-        style={{ backgroundImage: `url(${patternlight})`, minHeight: "100vh" }}
+        style={{ backgroundImage: `url(${patternlight})` }}
         className="bg-local bg-center bg-no-repeat bg-cover"
       >
         <div className="backdrop-opacity-10 backdrop-invert bg-white/30 p-4 rounded-lg">

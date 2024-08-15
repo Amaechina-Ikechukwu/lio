@@ -7,7 +7,8 @@ const image =
   "https://firebasestorage.googleapis.com/v0/b/lio-6af30.appspot.com/o/images%2FXRcZM4rs7DaSCStCCIvgkuVrlxh2%2FFrame%209.png?alt=media&token=f8e11522-c3c3-4c09-917b-353e837c90e5";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer/Footer";
-
+import { Link, ViewTransitions } from "next-view-transitions";
+import InputProvider from "@/components/Constants/InputContext";
 export const metadata: Metadata = {
   title: "lio",
   description: "Easy platform of compile your portfolio",
@@ -29,16 +30,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={` bg-gradient-to-t from-gray-900 to-black h-full  flex flex-col h-full  ${inter.className}`}
-      >
-        <div className="bg-gradient-to-b from-gray-900 to-black w-full ">
-          <Header />
-        </div>
-        <div className="container mx-auto p-4 px-10 sm:px-20 ">{children}</div>
-        <Footer />
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body
+          className={` bg-gradient-to-t from-gray-900 to-black h-full  flex flex-col h-full  ${inter.className}`}
+        >
+          <div className="bg-gradient-to-b from-gray-900 to-black w-full ">
+            <Header />
+          </div>
+          <div className="container mx-auto p-4 px-10 sm:px-20 ">
+            {children}
+          </div>
+          <Footer />
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
