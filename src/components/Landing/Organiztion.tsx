@@ -29,7 +29,9 @@ function Organiztion() {
           className="rounded-t-xl w-full h-[300px] object-cover "
         />
         <div className="bg-light-accent rounded-b-xl py-9 px-4">
-          <h2 className="font-bold text-2xl">We help Organizations too...</h2>
+          <h2 className="font-bold text-2xl">
+            We help Organizations too...(Coming soon)
+          </h2>
         </div>
       </div>
       <div className="space-y-6">
