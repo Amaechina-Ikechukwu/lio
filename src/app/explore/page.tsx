@@ -1,3 +1,4 @@
+import ExploreAll from "@/components/Explore/ExploreAll";
 import { Metadata } from "next";
 import React from "react";
 export const metadata: Metadata = {
@@ -14,8 +15,12 @@ export const metadata: Metadata = {
     icon: "https://firebasestorage.googleapis.com/v0/b/lio-6af30.appspot.com/o/images%2FXRcZM4rs7DaSCStCCIvgkuVrlxh2%2FFrame%209.png?alt=media&token=f8e11522-c3c3-4c09-917b-353e837c90e5",
   },
 };
-function page() {
-  return <div></div>;
+function Page() {
+  return (
+    <div className="h-screen">
+      <ExploreAll />
+    </div>
+  );
 }
 
-export default page;
+export default Page;
