@@ -88,7 +88,7 @@ export default async function Page({ params }: { params: { user: string } }) {
   const result = await getData(params.user);
   const projects = await getProjects(params.user);
   const { userData } = result;
-  console.log(projects);
+
   const socials = [
     {
       social: "github",
@@ -117,20 +117,20 @@ export default async function Page({ params }: { params: { user: string } }) {
   ];
 
   return (
-    <div className=" space-y-28  ">
+    <div className=" space-y-28  mt-20">
       <div className=" w-full md:flex justify-center md:justify-between items-center space-y-5 md:space-y-0">
         <div className="space-y-5 md:w-3/6 items-center">
-          <h2 className="text-5xl font-bold font-open-sans">
+          <h2 className="text-5xl font-bold font-open-sans text-gray-200">
             {userData.displayName}
           </h2>
-          <p className="text-sm  leading-7">{userData.bio}</p>
+          <p className="text-sm text-gray-200 leading-7">{userData.bio}</p>
           {userData.email && (
             <a href={`mailto:${userData.email}`}>
               <button className="p-2 flex space-x-3 transition duration-300 transform hover:scale-105 bg-light-accent w-2/4 rounded-full items-center justify-center mt-4">
                 <h3 className="underline-offset-1 font-bold text-xl font-open-sans">
                   Contact Me
                 </h3>
-                <EnvelopeIcon className="h-6 w-6 text-gray-500" />
+                <EnvelopeIcon className="h-6 w-6 text-gray-400" />
               </button>
             </a>
           )}
@@ -158,17 +158,19 @@ export default async function Page({ params }: { params: { user: string } }) {
           </div>
           <div></div>
         </div>
-        <Image
-          src={userData.photoURL}
-          alt={userData.displayName}
-          width={500}
-          height={200}
-        />
+        <div className="p-5 bg-gray-900 rounded-lg">
+          <Image
+            src={userData.photoURL}
+            alt={userData.displayName}
+            width={400}
+            height={200}
+          />
+        </div>
       </div>
 
       <div className="space-y-2">
         {projects.userportfolio && (
-          <p className="text-gray-500  text-md md:text-2xl">Projects</p>
+          <p className="text-gray-300  text-md md:text-2xl">Projects</p>
         )}
         <UserProjects
           user={result.userData.username}
