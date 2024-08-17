@@ -9,6 +9,8 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer/Footer";
 import { Link, ViewTransitions } from "next-view-transitions";
 import InputProvider from "@/components/Constants/InputContext";
+import { Suspense } from "react";
+import Loading from "./loading";
 export const metadata: Metadata = {
   title: "lio",
   description: "Easy platform of compile your portfolio",
@@ -35,13 +37,15 @@ export default function RootLayout({
         <body
           className={` bg-gradient-to-t from-gray-900 to-black h-full  flex flex-col h-full  ${inter.className}`}
         >
-          <div className="bg-gradient-to-b from-gray-900 to-black w-full ">
-            <Header />
-          </div>
-          <div className="container mx-auto p-4 px-10 sm:px-20 ">
-            {children}
-          </div>
-          <Footer />
+          <Suspense fallback={<Loading />}>
+            <div className="bg-gradient-to-b from-gray-900 to-black w-full ">
+              <Header />
+            </div>
+            <div className="container mx-auto p-4 px-10 sm:px-20 ">
+              {children}
+            </div>
+            <Footer />
+          </Suspense>
         </body>
       </html>
     </ViewTransitions>
