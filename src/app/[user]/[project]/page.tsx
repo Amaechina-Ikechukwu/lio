@@ -136,7 +136,7 @@ export default async function Page({
         />
         <div className="space-y-8 md:w-3/6">
           <div className="flex w-fit items-end space-x-3">
-            <h2 className="text-3xl sm:text-5xl font-bold font-open-sans">
+            <h2 className="text-3xl sm:text-5xl font-bold text-gray-100 font-open-sans">
               {projectData.name}
             </h2>
             <div>
@@ -145,10 +145,12 @@ export default async function Page({
           </div>
           <Link className="mt-14" href={`/${userData.username}`}>
             <button className=" flex w-fit  space-x-2 p-1 items-center rounded-full mt-4">
-              <p className=" text-sm text-gray-600 font-semibold">
+              <p className=" text-sm text-gray-500 font-semibold">
                 created by:
               </p>
-              <h1 className="text-sm text-underline">{userData.displayName}</h1>
+              <h1 className="text-sm text-underline text-gray-200">
+                {userData.displayName}
+              </h1>
               <Image
                 src={userData.photoURL}
                 alt={`${userData.displayName}-image`}
@@ -159,18 +161,18 @@ export default async function Page({
             </button>
           </Link>
 
-          <p className="leading-7 font-bold text-md">
+          <p className="leading-7 font-bold text-md text-gray-200">
             {projectData.description}
           </p>
           <div className="space-y-1">
-            <p className=" text-gray-600 font-semibold">Built with:</p>
-            <p className="font-semibold text-md">
+            <p className=" text-gray-500 font-semibold">Built with:</p>
+            <p className="font-semibold text-md text-gray-200">
               {projectData.technologyStack}
             </p>
           </div>
           {projectData?.category && (
             <div className="space-y-1">
-              <p className=" text-gray-600 font-semibold">For:</p>
+              <p className=" text-gray-500 font-semibold">For:</p>
               <div className="space-x-5 flex">
                 {projectData.category
                   ?.split(",")
@@ -180,7 +182,7 @@ export default async function Page({
                       className="w-fit p-2 rounded-full border-2"
                       key={index}
                     >
-                      <p className="font-semibold text-md">
+                      <p className="font-semibold text-md text-gray-200">
                         {cat.trim() || " "}
                       </p>
                     </div>
@@ -191,11 +193,11 @@ export default async function Page({
           <div>
             <button
               type="button"
-              className=" bg-light-accent focus:ring-4 focus:outline-none focus:ring-zinc-300 font-medium rounded-lg text-md px-5 py-2 text-center inline-flex items-center transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent text-gray-600"
+              className=" bg-light-accent focus:ring-4 focus:outline-none focus:ring-zinc-300 font-medium rounded-lg text-md px-5 py-2 text-center inline-flex items-center transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent text-gray-700"
             >
               View live demo
               <svg
-                className="rtl:rotate-180 w-3.5 h-3.5 ms-2 text-gray-600"
+                className="rtl:rotate-180 w-3.5 h-3.5 ms-2 text-gray-500"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -214,11 +216,11 @@ export default async function Page({
         </div>
       </div>
 
-      <div className="bg-gray-300 p-5 rounded-md space-y-4">
+      <div className="bg-gray-800 p-5 rounded-md space-y-4">
         {projectData.collectionOfImages.length > 0 && (
           <>
             <p>
-              <span className="text-gray-900">Project Images:</span>{" "}
+              <span className="text-gray-200">Project Images:</span>{" "}
               {projectData.albumName}
             </p>
             <ImageModal
@@ -232,14 +234,14 @@ export default async function Page({
       <div className="space-y-8">
         {projectData.challenges?.length > 0 && (
           <div className="space-y-1">
-            <p className=" text-gray-600 font-semibold">Challenges:</p>
-            <p className="">{projectData.challenges}</p>
+            <p className=" text-gray-500 font-semibold">Challenges:</p>
+            <p className=" text-gray-200">{projectData.challenges}</p>
           </div>
         )}
         {projectData.overcome?.length > 0 && (
           <div className="space-y-1">
-            <p className=" text-gray-600 font-semibold">How I overcame:</p>
-            <p className="">{projectData.overcome}</p>
+            <p className=" text-gray-500 font-semibold">How I overcame:</p>
+            <p className=" text-gray-200">{projectData.overcome}</p>
           </div>
         )}
       </div>

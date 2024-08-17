@@ -42,7 +42,7 @@ export default function SearchModal(props: {
           usersData.push(userData);
         }
       });
-      console.log(usersData);
+
       setUsers(usersData);
       setLoadingSpinner(false);
     } catch (error) {
