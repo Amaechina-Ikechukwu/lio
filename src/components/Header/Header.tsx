@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useDebouncedCallback } from "use-debounce";
 import lio from "./lio.png";
 import { Link } from "next-view-transitions";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
@@ -15,7 +16,7 @@ export default function Header() {
 
   const { replace } = useRouter();
 
-  function handleSearch(term: string) {
+  const handleSearch = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams);
     if (term) {
       params.set("search", term);
@@ -23,7 +24,7 @@ export default function Header() {
       params.delete("search");
     }
     replace(`${pathName}?${params.toString()}`);
-  }
+  }, 300);
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -55,7 +56,7 @@ export default function Header() {
         </button>
       </Link>
 
-      {filteredPath.length === 2 && (
+      {filteredPath.length === 2 && pathName.split("/")[1] !== "explore" && (
         <div>
           <a href={`${pathName}#work`}>
             <LioButton text={"View my works"} style="shadow-lg text-white" />
@@ -65,7 +66,7 @@ export default function Header() {
 
       {pathName === "/" && (
         <div>
-          <Link href="/explore">
+          <Link href="/explore/portfolios">
             <LioButton
               text="Explore Portfolios"
               style="shadow-lg text-gray-200 text-lg"
