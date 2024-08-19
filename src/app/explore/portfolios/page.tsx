@@ -15,9 +15,9 @@ async function getProjectByClicks() {
 
   return res.json();
 }
-async function getQuery(nick: string) {
+async function getQuery(search: string, category: string) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_LIOSERVER}/searchproject?search=${nick}`
+    `${process.env.NEXT_PUBLIC_LIOSERVER}/explore?search=${search}&category=${category}`
   );
 
   if (!res.ok) {
@@ -40,7 +40,20 @@ export const metadata: Metadata = {
     icon: "https://firebasestorage.googleapis.com/v0/b/lio-6af30.appspot.com/o/images%2FXRcZM4rs7DaSCStCCIvgkuVrlxh2%2FFrame%209.png?alt=media&token=f8e11522-c3c3-4c09-917b-353e837c90e5",
   },
 };
-async function Page() {
+async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    search?: string;
+    category?: string;
+  };
+}) {
+  const search = searchParams?.search || "";
+  const category = searchParams?.category || "";
+  if (search) {
+    const searchResult = await getQuery(search, category);
+    console.log(searchResult);
+  }
   const result = await getProjectByClicks();
   return (
     <div className="h-screen md:h-full">

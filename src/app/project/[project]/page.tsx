@@ -62,7 +62,6 @@ export async function generateMetadata({
   const { user, project } = params;
   const result = await getData(project.toLowerCase());
   const { projectData } = result;
-  const { userData } = await getUser(user);
 
   return {
     title: projectData.name,
