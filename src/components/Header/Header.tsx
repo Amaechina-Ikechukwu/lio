@@ -74,7 +74,7 @@ export default function Header() {
           </Link>
         </div>
       )}
-      {pathName === "/explore" && (
+      {pathName.split("/")[1] === "explore" && (
         <div className="flex flex-col  items-center w-full md:w-7/12 h-[50px] mt-4 hidden md:block">
           <div className="w-full rounded-lg h-full ">
             <form className="w-full h-full">

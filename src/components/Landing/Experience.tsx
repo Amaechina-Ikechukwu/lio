@@ -80,9 +80,9 @@ export default function Experience() {
               Get Started With Lio App
             </a>
           </button>
-          <div className="flex flex-col md:flex-row space-y-6 md:gap-14 md:justify-center items-center self-center px-5 relative w-screen mt-32 md:mt-0">
+          <div className="flex flex-col md:flex-row space-y-6 md:gap-14 justify-center items-center self-center px-5 relative w-screen mt-32 md:mt-0">
             {HowItWorks.map((work, index) => (
-              <div className=" self-end" key={index}>
+              <div className=" md:self-end" key={index}>
                 <div className="max-w-sm  border border-gray-800 rounded-lg shadow bg-gray-800 dark:border-gray-700">
                   <Image
                     src={work.image}
