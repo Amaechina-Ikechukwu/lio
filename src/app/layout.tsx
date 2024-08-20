@@ -35,16 +35,18 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body
-          className={` bg-gradient-to-t from-gray-900 to-black h-full  flex flex-col h-full  ${inter.className}`}
+          className={` bg-gradient-to-t from-gray-900 to-black h-screen  flex flex-col h-full  ${inter.className}`}
         >
           <Suspense fallback={<Loading />}>
             <div className="bg-gradient-to-b from-gray-900 to-black w-full ">
               <Header />
             </div>
-            <div className="container mx-auto p-4 px-10 sm:px-20 ">
+            <div className="container mx-auto p-4 px-10 sm:px-20 overflow-y-auto">
               {children}
             </div>
-            <Footer />
+            <div className="absolute bottom-0">
+              <Footer />
+            </div>
           </Suspense>
         </body>
       </html>
