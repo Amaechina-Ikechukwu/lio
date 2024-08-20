@@ -1,4 +1,5 @@
 import ExploreAll from "@/components/Explore/ExploreAll";
+import SearchResults from "@/components/Explore/SearchResults";
 import { Metadata } from "next";
 import React from "react";
 async function getProjectByClicks() {
@@ -18,9 +19,9 @@ async function getProjectByClicks() {
 
   return res.json();
 }
-async function getQuery(search: string, category: string) {
+async function getQuery(search: string, category: string = "name") {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_LIOSERVER}/explore?search=${search}&category=${category}`
+    `${process.env.NEXT_PUBLIC_LIOSERVER}/explore/search?search=${search}&category=${category}`
   );
 
   if (!res.ok) {
@@ -53,14 +54,21 @@ async function Page({
 }) {
   const search = searchParams?.search || "";
   const category = searchParams?.category || "";
+  let searchResult;
   if (search) {
-    const searchResult = await getQuery(search, category);
-    console.log(searchResult);
+    searchResult = await getQuery(search, category);
   }
   const result = await getProjectByClicks();
 
+  if (searchResult) {
+    return (
+      <div className="">
+        <SearchResults portfolio={searchResult.portfolio} />
+      </div>
+    );
+  }
   return (
-    <div className=" h-full">
+    <div className="">
       <ExploreAll portfolio={result} />
     </div>
   );
