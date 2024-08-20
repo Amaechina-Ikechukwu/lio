@@ -25,7 +25,7 @@ function Portfolios({ portfolio }: { portfolio: PortfoliosResponse }) {
 function Projects({ project }: { project: ProjectsResponse }) {
   const { projects } = project;
   return (
-    <div className="md:grid md:grid-cols-4  gap-24 ">
+    <div className="md:grid md:grid-cols-3  gap-4 ">
       {projects.map((project, index) => (
         <div
           key={index}
@@ -48,10 +48,11 @@ function ExploreAll({ portfolio }: { portfolio: any }) {
           <li className="me-2">
             <Link
               href="/explore/portfolios"
-              className={`inline-block p-4 border-b-2 border-transparent ${
-                pathName.split("/")[2] == "portfolios" &&
-                "active border-light-accent"
-              } rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300`}
+              className={`inline-block p-4  border-b-2  rounded-t-lg hover:border-gray-300 ${
+                pathName.split("/")[2] === "portfolios"
+                  ? "active border-light-accent"
+                  : "border-transparent"
+              }`}
             >
               <h3 className="text-gray-100 md:text-[32px] font-bold">
                 Popular portfolios
@@ -61,10 +62,11 @@ function ExploreAll({ portfolio }: { portfolio: any }) {
           <li className="me-2">
             <Link
               href="/explore/projects"
-              className={`inline-block p-4 border-transparent  ${
-                pathName.split("/")[2] == "projects" &&
-                "active border-light-accent"
-              } border-b-2 rounded-t-lg  text-light-accent `}
+              className={`inline-block p-4  border-b-2  rounded-t-lg hover:border-gray-300 ${
+                pathName.split("/")[2] === "projects"
+                  ? "active border-light-accent"
+                  : "border-transparent"
+              }`}
               aria-current="page"
             >
               <h3 className="text-gray-100 md:text-[32px] font-bold">

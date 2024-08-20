@@ -3,7 +3,7 @@ import React from "react";
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="max-w-[320px] rounded-lg shadow bg-gray-900 border-gray-700">
+    <div className="max-w-sm rounded-lg shadow bg-gray-900 border-gray-700">
       <img
         className="rounded-t-lg h-[200px] object-contain w-full"
         src={project.heroImage}
