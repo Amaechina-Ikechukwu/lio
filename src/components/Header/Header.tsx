@@ -18,10 +18,8 @@ export default function Header() {
     const params = new URLSearchParams(searchParams);
     if (term) {
       params.set("search", term);
-      params.set("category", "name");
     } else {
       params.delete("search");
-      params.delete("category");
     }
     replace(`${pathName}?${params.toString()}`);
   }, 300);
@@ -57,7 +55,7 @@ export default function Header() {
         </button>
       </Link>
 
-      {filteredPath.length === 2 && pathName.split("/")[1] !== "explore" && (
+      {filteredPath.length === 1 && pathName.split("/")[1] !== "explore" && (
         <div>
           <a href={`${pathName}#work`}>
             <LioButton text={"View my works"} style="shadow-lg text-white" />
@@ -171,27 +169,6 @@ export default function Header() {
                       }}
                       defaultValue={searchParams.get("search")?.toString()}
                     />
-                    <button
-                      type="submit"
-                      className="absolute top-0 end-0 py-2.5 px-5 text-sm font-medium h-full text-white bg-gray-900 rounded-e-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-800 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-                    >
-                      <svg
-                        className="w-4 h-4"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                        />
-                      </svg>
-                      <span className="sr-only">Search</span>
-                    </button>
                   </div>
                 </div>
               </form>

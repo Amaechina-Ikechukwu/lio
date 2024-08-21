@@ -44,9 +44,9 @@ export default function RootLayout({
             <div className="container mx-auto p-4 px-10 sm:px-20 overflow-y-auto">
               {children}
             </div>
-            <div className="absolute bottom-0">
-              <Footer />
-            </div>
+            {/* <div className="absolute bottom-0"> */}
+            <Footer />
+            {/* </div> */}
           </Suspense>
         </body>
       </html>
