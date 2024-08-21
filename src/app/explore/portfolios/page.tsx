@@ -65,7 +65,7 @@ async function Page({
     );
   }
   return (
-    <div className="">
+    <div className="h-screen md:h-full">
       <ExploreAll portfolio={result} />
     </div>
   );
