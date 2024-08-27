@@ -30,7 +30,7 @@ export default function HeroBody() {
 
           <div className="flex flex-col w-full sm:w-fit items-start sm:flex-row space-y-4 sm:space-y-0 space-x-0 sm:space-x-8">
             <button className="bg-light-accent w-full sm:w-fit  text-gray-900 font-bold rounded-xl shadow-xl py-4 px-4 font-regular transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent">
-              <a href="https://firebasestorage.googleapis.com/v0/b/lio-6af30.appspot.com/o/lio.apk?alt=media&token=d215a761-c8bf-4dbc-90ba-f203001ef6c0">
+              <a href="https://firebasestorage.googleapis.com/v0/b/lio-6af30.appspot.com/o/lio1.apk?alt=media&token=37255135-8e55-47ae-8cb4-97beb479cc77">
                 Get the app now
               </a>
             </button>
