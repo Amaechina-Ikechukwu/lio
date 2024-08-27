@@ -58,7 +58,7 @@ export default function Page() {
                 </div>
 
                 <button className="bg-light-accent w-full sm:w-3/6  text-gray-900 font-bold rounded-xl shadow-xl h-fit p-4 font-regular transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent">
-                  <a href="https://firebasestorage.googleapis.com/v0/b/lio-6af30.appspot.com/o/lio.apk?alt=media&token=d215a761-c8bf-4dbc-90ba-f203001ef6c0">
+                  <a href="https://firebasestorage.googleapis.com/v0/b/lio-6af30.appspot.com/o/lio1.apk?alt=media&token=37255135-8e55-47ae-8cb4-97beb479cc77">
                     Get the app now
                   </a>
                 </button>
