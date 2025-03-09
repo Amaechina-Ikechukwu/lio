@@ -6,7 +6,30 @@ import { Link } from "next-view-transitions";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import LioButton from "./LioButton";
 import { useEffect, useState } from "react";
-
+import { useAuth } from "@/contexts/AuthProvider";
+const UserAvatar = () => {
+  const { currentUser } = useAuth();
+  if (!currentUser) {
+    return (
+      <button className="bg-light-accent w-full sm:w-fit  text-gray-900 font-bold rounded-xl shadow-xl py-4 px-4 font-regular transition duration-300 transform hover:scale-105 hover:bg-opacity-80 focus:outline-none ring ring-light-accent">
+        Login
+      </button>
+    );
+  }
+  return (
+    <div>
+      <div className=" flex items-center justify-center">
+        <Image
+          src={currentUser.photoURL || lio}
+          width={50}
+          height={50}
+          alt="Lio"
+          className="ring ring-light-accent rounded-full"
+        />
+      </div>
+    </div>
+  );
+};
 export default function Header() {
   const pathName = usePathname();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -41,7 +64,7 @@ export default function Header() {
   };
 
   const filteredPath = pathName.split("/").filter((str) => str.trim() !== "");
-
+  const viewMyWorksButtonAvoid = ["explore", "profile"];
   return (
     <div
       className={`bg-transparent container mx-auto px-10 sm:px-20 py-4 flex ${
@@ -55,13 +78,14 @@ export default function Header() {
         </button>
       </Link>
 
-      {filteredPath.length === 1 && pathName.split("/")[1] !== "explore" && (
-        <div>
-          <a href={`${pathName}#work`}>
-            <LioButton text={"View my works"} style="shadow-lg text-white" />
-          </a>
-        </div>
-      )}
+      {filteredPath.length === 1 &&
+        !viewMyWorksButtonAvoid.includes(pathName.split("/")[1]) && (
+          <div>
+            <a href={`${pathName}#work`}>
+              <LioButton text={"View my works"} style="shadow-lg text-white" />
+            </a>
+          </div>
+        )}
 
       {pathName === "/" && (
         <div>
@@ -74,11 +98,11 @@ export default function Header() {
         </div>
       )}
 
-      {pathName.split("/")[1] === "explore" && (
+      {viewMyWorksButtonAvoid.includes(pathName.split("/")[1]) && (
         <div
-          className={`flex items-center 
+          className={`flex 
              w-full 
-          md:w-7/12 h-[50px]`}
+          md:w-7/12 h-[70px] items-center justify-center space-x-4`}
         >
           <div
             className={`flex flex-col items-center mt-4 md:block w-full md:scale-100`}
@@ -174,6 +198,7 @@ export default function Header() {
               </form>
             </div>
           </div>
+          <UserAvatar />
         </div>
       )}
     </div>

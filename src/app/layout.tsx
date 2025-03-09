@@ -11,6 +11,7 @@ import { Link, ViewTransitions } from "next-view-transitions";
 import InputProvider from "@/components/Constants/InputContext";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { AuthProvider } from "@/contexts/AuthProvider";
 export const metadata: Metadata = {
   title: "lio",
   description: "Easy platform of compile your portfolio",
@@ -39,7 +40,9 @@ export default function RootLayout({
         >
           <Suspense fallback={<Loading />}>
             <div className="bg-gradient-to-b from-gray-900 to-black w-full ">
-              <Header />
+              <AuthProvider>
+                <Header />
+              </AuthProvider>
             </div>
             <div className="container mx-auto p-4 px-10 sm:px-20 overflow-y-auto">
               {children}
