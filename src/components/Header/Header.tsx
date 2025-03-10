@@ -18,15 +18,17 @@ const UserAvatar = () => {
   }
   return (
     <div>
-      <div className=" flex items-center justify-center">
-        <Image
-          src={currentUser.photoURL || lio}
-          width={50}
-          height={50}
-          alt="Lio"
-          className="ring ring-light-accent rounded-full"
-        />
-      </div>
+      <Link href={"/profile"}>
+        <div className=" flex items-center justify-center">
+          <Image
+            src={currentUser.photoURL || lio}
+            width={50}
+            height={50}
+            alt="Lio"
+            className="ring ring-light-accent rounded-full"
+          />
+        </div>
+      </Link>
     </div>
   );
 };

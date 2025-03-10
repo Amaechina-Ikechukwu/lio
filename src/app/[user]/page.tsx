@@ -3,7 +3,7 @@ import Image from "next/image";
 import lio from "../../../../public/lio.png";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import UserProjects from "../../components/Profile/UserProjects";
-
+ 
 import Link from "next/link";
 async function getData(user: string) {
   const username = user.toLowerCase();
@@ -88,7 +88,8 @@ export default async function Page({ params }: { params: { user: string } }) {
   const result = await getData(params.user);
   const projects = await getProjects(params.user);
   const { userData } = result;
-
+  console.log(result);
+  console.log(projects);
   const socials = [
     {
       social: "github",

@@ -2,9 +2,10 @@
 import React, { useRef, useState } from "react";
 import { Button, Label, Modal, TextInput } from "flowbite-react";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../../../firebase";
+
 import Link from "next/link";
 import { Spinner } from "flowbite-react";
+import { db } from "@/firebase/config";
 
 interface User {
   displayName: string;
