@@ -9,6 +9,12 @@ const nextConfig = {
         // pathname: '/account123/**',
       },
       {
+        protocol: "http",
+        hostname: "placeimg.com",
+        port: "",
+        // pathname: '/account123/**',
+      },
+      {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
         port: "",

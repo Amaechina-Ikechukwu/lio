@@ -1,5 +1,6 @@
-import Image from 'next/image'
-import lio from './lio.png'
+"use client";
+import Image from "next/image";
+import lio from "./lio.png";
 import { useEffect, useState } from "react";
 import {
   Portfolio,
@@ -11,14 +12,19 @@ import LoadingComponent from "../Constants/LoadingComponent";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import UserProjects from "../../components/Profile/UserProjects";
 import { Link } from "next-view-transitions";
+import { useAuth } from "@/contexts/AuthProvider";
+import UserProjectsGrid from "./UserProjectsGrid";
 export default function ProfileLanding() {
-  const [projects, setProjects] = useState<any>({});
+  const [projects, setProjects] = useState<any>([]);
   const [userData, setUserData] = useState<UserProfile>();
-  async function getData(user: string) {
-    const username = user.toLowerCase();
+  const { lioToken } = useAuth();
+  async function getData() {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_LIOSERVER}/searchuser?search=${username}`,
-      { next: { revalidate: 5 } }
+      `${process.env.NEXT_PUBLIC_LIOSERVER}/userprofile`,
+      {
+        next: { revalidate: 5 },
+        headers: { Authorization: `Bearer ${lioToken}` },
+      }
     );
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
@@ -28,13 +34,17 @@ export default function ProfileLanding() {
       throw new Error("Failed to fetch data");
     }
 
-    const profileResult = res.json();
-    console.log({ profileResult });
+    const { userprofile } = await res.json();
+    setUserData(userprofile);
   }
 
-  async function getProjects(user: string) {
+  async function getProjects() {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_LIOSERVER}/userprojectsbyusername?username=${user}`
+      `${process.env.NEXT_PUBLIC_LIOSERVER}/getuserprojects`,
+      {
+        next: { revalidate: 5 },
+        headers: { Authorization: `Bearer ${lioToken}` },
+      }
     );
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
@@ -44,10 +54,13 @@ export default function ProfileLanding() {
       throw new Error("Failed to fetch data");
     }
 
-    const projectResult = res.json();
-    console.log({ projectResult });
+    const { userportfolio } = await res.json();
+    setProjects(userportfolio);
   }
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getData();
+    getProjects();
+  }, []);
   const socials = [
     {
       social: "github",
@@ -76,13 +89,13 @@ export default function ProfileLanding() {
   ];
   if (!userData) {
     return (
-      <>
+      <div className=" w-full md:flex justify-center md:justify-between items-center space-y-5 md:space-y-0">
         <LoadingComponent />
-      </>
+      </div>
     );
   }
   return (
-    <div className=" space-y-28  mt-20">
+    <div className=" space-y-28 w-full mt-20">
       <div className=" w-full md:flex justify-center md:justify-between items-center space-y-5 md:space-y-0">
         <div className="space-y-5 md:w-3/6 items-center">
           <h2 className="text-5xl font-bold font-open-sans text-gray-200">
@@ -140,10 +153,10 @@ export default function ProfileLanding() {
       </div>
 
       <div className="space-y-2">
-        {projects.userportfolio && (
+        {projects && (
           <p className="text-gray-300  text-md md:text-2xl">Projects</p>
         )}
-        <UserProjects user={userData.username} data={projects.userportfolio} />
+        <UserProjectsGrid user={userData.username} data={projects} />
       </div>
     </div>
   );

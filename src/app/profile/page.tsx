@@ -3,6 +3,7 @@ import lio from "../../../../public/lio.png";
 import Link from "next/link";
 
 import type { Metadata, ResolvingMetadata } from "next";
+import ProfileLanding from "@/components/Profile/Profilelanding";
 
 export default async function Page({
   params,
@@ -10,8 +11,8 @@ export default async function Page({
   params: { user: string; project: string };
 }) {
   return (
-    <div className="space-y-20 pt-14 flex h-screen">
-      <h1 className="text-5xl font-bold text-white">Hello</h1>
+    <div className="space-y-20 pt-14 flex h-screen w-full">
+      <ProfileLanding />
     </div>
   );
 }
