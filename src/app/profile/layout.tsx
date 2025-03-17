@@ -10,7 +10,7 @@ export default function FunctionLayout({
 }) {
   return (
     <main className="flex items-center justify-center  ">
-      <div className="w-full md:w-3/4 p-4">
+      <div className="w-full  p-4">
         <Suspense
           fallback={
             <div className="h-screen flex items-center justify-center">
@@ -23,7 +23,9 @@ export default function FunctionLayout({
             </div>
           }
         >
-          <Layout>{children}</Layout>
+          <Layout>
+            <div className=" w-full">{children}</div>
+          </Layout>
         </Suspense>
       </div>
     </main>

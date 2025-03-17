@@ -32,24 +32,26 @@ function ChildrenLayout({ children }: { children: React.ReactNode }) {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <AuthProvider>
-      <div>
-        <div className="divider"></div>
-      </div>
-      <Suspense
-        fallback={
-          <div className="h-screen flex items-center justify-center">
-            <Image
-              src={lio}
-              width={500}
-              alt="Lio"
-              className="w-24 h-24 animate-pulse"
-            />
-          </div>
-        }
-      >
-        <ChildrenLayout>{children}</ChildrenLayout>
-      </Suspense>
-    </AuthProvider>
+    <div className="w-full ">
+      <AuthProvider>
+        <div>
+          <div className="divider"></div>
+        </div>
+        <Suspense
+          fallback={
+            <div className="h-screen flex items-center justify-center">
+              <Image
+                src={lio}
+                width={500}
+                alt="Lio"
+                className="w-24 h-24 animate-pulse"
+              />
+            </div>
+          }
+        >
+          <ChildrenLayout>{children}</ChildrenLayout>
+        </Suspense>
+      </AuthProvider>
+    </div>
   );
 }

@@ -14,10 +14,12 @@ import UserProjects from "../../components/Profile/UserProjects";
 import { Link } from "next-view-transitions";
 import { useAuth } from "@/contexts/AuthProvider";
 import UserProjectsGrid from "./UserProjectsGrid";
+import { usePathname, useRouter } from "next/navigation";
 export default function ProfileLanding() {
   const [projects, setProjects] = useState<any>([]);
   const [userData, setUserData] = useState<UserProfile>();
   const { lioToken } = useAuth();
+
   async function getData() {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_LIOSERVER}/userprofile`,
@@ -35,6 +37,7 @@ export default function ProfileLanding() {
     }
 
     const { userprofile } = await res.json();
+    redirect(userprofile.username);
     setUserData(userprofile);
   }
 
@@ -61,6 +64,27 @@ export default function ProfileLanding() {
     getData();
     getProjects();
   }, []);
+  const router = useRouter();
+  const pathname = usePathname(); // Get the current URL path
+  const redirect = (user: string) => {
+    const parts = pathname.split("/");
+    const lastPart = parts[parts.length - 1];
+
+    if (lastPart === "undefined") {
+      // Remove last part and replace with username
+      const newPath = parts.slice(0, -1).join("/") + `/${user}`;
+      router.replace(newPath);
+    }
+  };
+  // useEffect(() => {
+  //   const parts = pathname.split("/");
+  //   const lastPart = parts[parts.length - 1];
+
+  //   if (lastPart === "undefined") {
+  //     const newPath = parts.slice(0, -1).join("/") || "/";
+  //     router.replace(newPath); // Replace URL without adding history
+  //   }
+  // }, [pathname, router]);
   const socials = [
     {
       social: "github",

@@ -21,7 +21,7 @@ const UserProjectsGrid: React.FC<UserProjectsProps> = ({ data, user }) => {
       {data.map((project) => (
         <Link
           key={project.id}
-          href={`/${user}/${project.nickname}`}
+          href={`/profile/${user}/${project.nickname}`}
           className="block"
         >
           <div className="w-full p-4 transition duration-300 transform hover:scale-105 bg-gray-800 rounded-lg shadow-lg">
