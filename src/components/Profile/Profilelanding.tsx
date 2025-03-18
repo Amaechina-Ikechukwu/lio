@@ -15,6 +15,7 @@ import { Link } from "next-view-transitions";
 import { useAuth } from "@/contexts/AuthProvider";
 import UserProjectsGrid from "./UserProjectsGrid";
 import { usePathname, useRouter } from "next/navigation";
+import LioButton from "../Header/LioButton";
 export default function ProfileLanding() {
   const [projects, setProjects] = useState<any>([]);
   const [userData, setUserData] = useState<UserProfile>();
@@ -113,13 +114,17 @@ export default function ProfileLanding() {
   ];
   if (!userData) {
     return (
-      <div className=" w-full md:flex justify-center md:justify-between items-center space-y-5 md:space-y-0">
+      <div className="">
         <LoadingComponent />
       </div>
     );
   }
   return (
     <div className=" space-y-28 w-full mt-20">
+      <div className="flex flex-col md:flex-row items-center justify-end space-y-2 md:space-x-4 md:space-y-0 hidden md:block">
+        <LioButton text="Edit Profile" style="bg-light-accent w-[150px]" />
+        <LioButton text="Log out" style="bg-red-500 text-white w-[150px]" />
+      </div>
       <div className=" w-full md:flex justify-center md:justify-between items-center space-y-5 md:space-y-0">
         <div className="space-y-5 md:w-3/6 items-center">
           <h2 className="text-5xl font-bold font-open-sans text-gray-200">

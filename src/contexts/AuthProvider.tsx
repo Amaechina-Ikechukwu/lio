@@ -18,6 +18,7 @@ interface AuthContextProps {
   currentUser: User | null;
   token: string | null;
   lioToken: string | null;
+  userProfile: any | null;
   loading: boolean;
   login: () => Promise<void>;
   logout: () => Promise<void>;
@@ -37,7 +38,7 @@ const loginToLioServer = async (userInfo: any): Promise<string | null> => {
   try {
     const serverUrl = process.env.NEXT_PUBLIC_LIOSERVER;
     if (!serverUrl) {
-      console.error("EXPO_PUBLIC_LIOSERVER is not defined");
+      console.error("NEXT_PUBLIC_LIOSERVER is not defined");
       return null;
     }
     const response = await fetch(`${serverUrl}/registeruser`, {
@@ -56,11 +57,35 @@ const loginToLioServer = async (userInfo: any): Promise<string | null> => {
   }
 };
 
+// Function to fetch user profile
+const getUserProfile = async (lioToken: string | null) => {
+  if (!lioToken) return null;
+
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_LIOSERVER}/userprofile`,
+      {
+        headers: { Authorization: `Bearer ${lioToken}` },
+        cache: "no-store", // Ensure fresh data
+      }
+    );
+
+    if (!res.ok) throw new Error("Failed to fetch user profile");
+
+    const { userprofile } = await res.json();
+    return userprofile;
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    return null;
+  }
+};
+
 // Auth provider component
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [lioToken, setLioToken] = useState<string | null>(null);
+  const [userProfile, setUserProfile] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -80,12 +105,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           });
 
           setLioToken(lioServerToken);
+
+          // Fetch user profile if Lio token exists
+          if (lioServerToken) {
+            const profile = await getUserProfile(lioServerToken);
+            setUserProfile(profile);
+          }
         } catch (error) {
           console.error("Error during authentication:", error);
         }
       } else {
         setToken(null);
         setLioToken(null);
+        setUserProfile(null);
       }
       setLoading(false);
     });
@@ -106,12 +138,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       await signOut(auth);
+      setUserProfile(null);
     } finally {
       setLoading(false);
     }
   };
 
-  const value = { currentUser, token, lioToken, loading, login, logout };
+  const value = {
+    currentUser,
+    token,
+    lioToken,
+    userProfile,
+    loading,
+    login,
+    logout,
+  };
 
   return (
     <AuthContext.Provider value={value}>
