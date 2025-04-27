@@ -90,17 +90,19 @@ export default function Header() {
 
       {/* Desktop Navigation */}
       <nav
-        className={`md:flex space-x-4 md:w-2/5 ${
+        className={`md:flex space-x-4 bg-red-200  ${
+          pathName === "/" ? "md:w-fit" : "md:w-2/5"
+        } ${
           isMenuOpen
             ? "block absolute top-20 z-10 left-0 w-full bg-gray-900 p-4 space-y-4"
-            : "hidden md:flex"
+            : "hidden md:flex "
         }`}
       >
         {pathName === "/" && (
-          <Link href="/explore/portfolios">
+          <Link href="/explore/portfolios" className="w-full">
             <LioButton
               text="Explore Portfolios"
-              style="shadow-lg text-gray-200 text-lg"
+              style="shadow-lg text-gray-200 text-lg md:w-full justify-self-end"
             />
           </Link>
         )}
@@ -171,27 +173,27 @@ export default function Header() {
                 />
               </div>
             )}
-            {/* {pathNameSplit.length > 1 && pathNameSplit[1] == "profile" && ( */}
-            <div className="flex flex-col space-y-4 w-full items-center md:justify-end">
-              <UserAvatar />
-              {pathNameSplit.length > 1 && pathNameSplit[1] == "profile" && (
-                <div className="flex flex-col md:flex-row items-center w-full space-y-2 md:space-x-4 md:space-y-0 md:hidden">
-                  <LioButton
-                    text="Edit Profile"
-                    style="bg-light-accent w-full"
-                    onClick={() =>
-                      push(`/profile/${userProfile.username}/editprofile`)
-                    }
-                  />
+            {pathName !== "/" && (
+              <div className="flex flex-col space-y-4 w-full items-center md:justify-end">
+                <UserAvatar />
+                {pathNameSplit.length > 1 && pathNameSplit[1] == "profile" && (
+                  <div className="flex flex-col md:flex-row items-center w-full space-y-2 md:space-x-4 md:space-y-0 md:hidden">
+                    <LioButton
+                      text="Edit Profile"
+                      style="bg-light-accent w-full"
+                      onClick={() =>
+                        push(`/profile/${userProfile.username}/editprofile`)
+                      }
+                    />
 
-                  <LioButton
-                    text="Log out"
-                    style="bg-red-500 text-white w-full"
-                  />
-                </div>
-              )}
-            </div>
-            {/* )} */}
+                    <LioButton
+                      text="Log out"
+                      style="bg-red-500 text-white w-full"
+                    />
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </nav>
